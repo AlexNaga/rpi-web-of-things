@@ -1,7 +1,4 @@
 # 1DV527: Project
-
-Interface repository for 1DV527 Project.
-
 ## About
 
 This repository was created for the course 1DV527: The web as an application platform.
