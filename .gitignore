@@ -1,0 +1,15 @@
+### Visual Studio Code ###
+.vscode/*
+.history
+
+### DB ###
+*.db
+nodemon.json
+
+### Logs ###
+*.log
+npm-debug.log*
+
+### Dependency directories ###
+node_modules/
+jspm_packages/
