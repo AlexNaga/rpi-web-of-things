@@ -1,0 +1,22 @@
+{
+  "name": "rpi-sensors",
+  "version": "1.0.0",
+  "description": "A rpi with a bunch of sensors connected to it.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv527/grupp04-vt18.git"
+  },
+  "author": "Alex Naga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1dv527/grupp04-vt18/issues"
+  },
+  "homepage": "https://github.com/1dv527/grupp04-vt18#readme",
+  "dependencies": {
+    "raspi-sensors": "^0.2.11"
+  }
+}
