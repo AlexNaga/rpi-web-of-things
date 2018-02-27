@@ -17,6 +17,8 @@ const indexRoutes = require('./src/routes/index');
 app.use(logger('dev')); // Logs all requests to the terminal
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
+console.log(__dirname + '/public');
 
 // Routes
 app.use('/', indexRoutes);
