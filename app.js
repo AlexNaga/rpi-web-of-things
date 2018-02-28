@@ -69,6 +69,8 @@ BMP180.fetchInterval((err, data) => {
 //   if (err) {
 //     console.error('An error occured!');
 //     console.error(err.cause);
+//     console.log(err);
+
 //     return;
 //   }
 
