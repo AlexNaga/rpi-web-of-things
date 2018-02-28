@@ -55,7 +55,7 @@ BMP180.fetchInterval((err, data) => {
   }
 
   console.log(data.sensor_type);
-  console.log(data.value.toFixed(1) + data.unit_display);
+  console.log(data.value.toFixed(2) + data.unit_display + '\n');
 }, refreshTimeInSec);
 
 module.exports = app;
