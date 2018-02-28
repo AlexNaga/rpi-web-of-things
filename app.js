@@ -45,10 +45,10 @@ let BMP180 = new RaspiSensors.Sensor({
   address: 0x77
 }, 'temp_pressure_sensor');
 
-let TSL2561 = new RaspiSensors.Sensor({
-  type: 'TSL2561',
-  address: 0X03
-}, 'light_sensor');
+// let TSL2561 = new RaspiSensors.Sensor({
+//   type: 'TSL2561',
+//   address: 0X03
+// }, 'light_sensor');
 
 const refreshTimeInSec = 5;
 
@@ -63,15 +63,15 @@ BMP180.fetchInterval((err, data) => {
   console.log(data.value.toFixed(2) + data.unit_display + '\n');
 }, refreshTimeInSec);
 
-TSL2561.fetchInterval((err, data) => {
-  if (err) {
-    console.error('An error occured!');
-    console.error(err.cause);
-    return;
-  }
+// TSL2561.fetchInterval((err, data) => {
+//   if (err) {
+//     console.error('An error occured!');
+//     console.error(err.cause);
+//     return;
+//   }
 
-  console.log(data.sensor_type);
-  console.log(data.value.toFixed(2) + data.unit_display + '\n');
-}, refreshTimeInSec);
+//   console.log(data.sensor_type);
+//   console.log(data.value.toFixed(2) + data.unit_display + '\n');
+// }, refreshTimeInSec);
 
 module.exports = app;
