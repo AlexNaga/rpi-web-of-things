@@ -38,4 +38,22 @@ app.use((err, req, res, next) => {
   });
 });
 
+var RaspiSensors = require('raspi-sensors');
+
+var BMP180 = new RaspiSensors.Sensor({
+  type: "BMP180",
+  address: 0x77
+}, "temp_pressure_sensor");
+
+BMP180.fetchInterval(function (err, data) {
+  if (err) {
+    console.error("An error occured!");
+    console.error(err.cause);
+    return;
+  }
+
+  // Log the values
+  console.log(data);
+}, 5);
+
 module.exports = app;
