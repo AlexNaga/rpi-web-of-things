@@ -50,7 +50,7 @@ let BMP180 = new RaspiSensors.Sensor({
 //   address: 0X03
 // }, 'light_sensor');
 
-const refreshTimeInSec = 1;
+const refreshTimeInSec = 2;
 
 BMP180.fetchInterval((err, data) => {
   if (err) {
