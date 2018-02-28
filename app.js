@@ -38,26 +38,26 @@ app.use((err, req, res, next) => {
   });
 });
 
-let RaspiSensors = require('raspi-sensors');
-
-let BMP180 = new RaspiSensors.Sensor({
-  type: 'BMP180',
-  address: 0x77
-}, 'temp_pressure_sensor');
-
-// let TSL2561 = new RaspiSensors.Sensor({
-//   type: 'TSL2561',
-//   address: 0X03
-// }, 'light_sensor');
-
+const RaspiSensors = require('raspi-sensors');
 const refreshTimeInSec = 2;
 
-BMP180.fetchInterval((err, data) => {
+const TSL2561 = new RaspiSensors.Sensor({
+  type: 'TSL2561',
+  address: 0X03
+}, 'light_sensor');
+
+// const BMP180 = new RaspiSensors.Sensor({
+//   type: 'BMP180',
+//   address: 0x77
+// }, 'temp_pressure_sensor');
+
+
+TSL2561.fetchInterval((err, data) => {
   if (err) {
     console.error('An error occured!');
     console.error(err.cause);
     console.log(err);
-    
+
     return;
   }
 
@@ -65,12 +65,12 @@ BMP180.fetchInterval((err, data) => {
   console.log(data.value.toFixed(2) + data.unit_display + '\n');
 }, refreshTimeInSec);
 
-// TSL2561.fetchInterval((err, data) => {
+// BMP180.fetchInterval((err, data) => {
 //   if (err) {
 //     console.error('An error occured!');
 //     console.error(err.cause);
 //     console.log(err);
-
+    
 //     return;
 //   }
 
