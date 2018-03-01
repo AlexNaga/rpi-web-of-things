@@ -84,8 +84,12 @@ BMP180.fetchInterval((err, data) => {
     return;
   }
 
+  console.log(data.sensor_type + ': ' +
+    data.value.toFixed(2) + '°C, ' +
+    b.humidity.toFixed(1) + '%');
+
   console.log(data.sensor_type);
-  console.log(data.value.toFixed(2) + data.unit_display + '\n');
+  console.log(data.value.toFixed(2) + ' ' + data.unit_display);
 }, refreshTimeInSec);
 
 BMP180.fetchInterval((err, data) => {
@@ -96,7 +100,7 @@ BMP180.fetchInterval((err, data) => {
   }
 
   console.log(data.sensor_type);
-  console.log(data.value.toFixed(2) + data.unit_display + '\n');
+  console.log(data.value.toFixed(2) + ' ' + data.unit_display);
 }, refreshTimeInSec);
 
 module.exports = app;
