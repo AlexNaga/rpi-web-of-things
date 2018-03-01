@@ -88,7 +88,7 @@ BMP180.fetchInterval((err, data) => {
     data.value.toFixed(2) + data.unit_display + ', ');
 }, refreshTimeInSec);
 
-BMP180.fetchInterval((err, data) => {
+TSL2561.fetchInterval((err, data) => {
   if (err) {
     console.error("An error occured!");
     console.error(err.cause);
