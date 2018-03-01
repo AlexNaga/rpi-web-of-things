@@ -60,7 +60,7 @@ const gpioSensor = {
 
     setTimeout(() => {
       gpioSensor.read();
-    }, refreshTimeInSec);
+    }, refreshTimeInSec * 1000);
   }
 };
 
