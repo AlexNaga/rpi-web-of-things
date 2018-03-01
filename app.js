@@ -55,7 +55,7 @@ const gpioSensor = {
       let b = gpioSensorLib.read(this.sensors[a].type, this.sensors[a].pin);
       console.log(this.sensors[a].name + ': ' +
         b.temperature.toFixed(1) + '°C, ' +
-        b.humidity.toFixed(1) + '%');
+        b.humidity.toFixed(1) + '%\n');
     }
 
     setTimeout(() => {
@@ -85,7 +85,7 @@ BMP180.fetchInterval((err, data) => {
   }
 
   console.log(data.sensor_type + ': ' +
-    data.value.toFixed(2) + data.unit_display + ', ');
+    data.value.toFixed(2) + data.unit_display);
 }, refreshTimeInSec);
 
 TSL2561.fetchInterval((err, data) => {
@@ -96,7 +96,7 @@ TSL2561.fetchInterval((err, data) => {
   }
 
   console.log(data.sensor_type + ': ' +
-    data.value.toFixed(2) + data.unit_display + ', ');
+    data.value.toFixed(2) + data.unit_display);
 }, refreshTimeInSec);
 
 module.exports = app;
