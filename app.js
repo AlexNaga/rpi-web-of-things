@@ -49,7 +49,7 @@ let BMP180 = new sensorLib.Sensor({
 
 let DHT22 = new sensorLib.Sensor({
   type: 'DHT22',
-  address: 0X7
+  pin: 0X7
 }, 'temp_humidity_sensor');
 
 let TSL2561 = new sensorLib.Sensor({
