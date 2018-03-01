@@ -39,64 +39,39 @@ app.use((err, req, res, next) => {
 });
 
 // Setup sensors
-const gpioSensorLib = require('node-dht-sensor');
-const i2cSensorLib = require('raspi-sensors');
+const sensorLib = require('raspi-sensors');
 const refreshTimeInSec = 5;
 
-const gpioSensor = {
-  sensors: [{
-    name: 'AM2302',
-    type: 22,
-    pin: 4
-  }],
-
-  read: function () {
-    for (let a in this.sensors) {
-      let b = gpioSensorLib.read(this.sensors[a].type, this.sensors[a].pin);
-      console.log(this.sensors[a].name + ': ' +
-        b.temperature.toFixed(1) + '°C, ' +
-        b.humidity.toFixed(1) + '%\n');
-    }
-
-    setTimeout(() => {
-      gpioSensor.read();
-    }, refreshTimeInSec * 1000);
-  }
-};
-
-const BMP180 = new i2cSensorLib.Sensor({
+let BMP180 = new sensorLib.Sensor({
   type: 'BMP180',
   address: 0x77
 }, 'temp_pressure_sensor');
 
-const TSL2561 = new i2cSensorLib.Sensor({
+let DHT22 = new sensorLib.Sensor({
+  type: 'DHT22',
+  address: 0X7
+}, 'temp_humidity_sensor');
+
+let TSL2561 = new sensorLib.Sensor({
   type: 'TSL2561',
   address: 0X39
 }, 'light_sensor');
 
-// Read sensors
-gpioSensor.read();
-
-BMP180.fetchInterval((err, data) => {
+// Define a callback
+let cb = (err, data) => {
   if (err) {
     console.error("An error occured!");
     console.error(err.cause);
     return;
   }
 
-  console.log(data.sensor_type + ': ' +
-    data.value.toFixed(2) + data.unit_display);
-}, refreshTimeInSec);
+  console.log(data);
+}
 
-TSL2561.fetchInterval((err, data) => {
-  if (err) {
-    console.error("An error occured!");
-    console.error(err.cause);
-    return;
-  }
+BMP180.fetch(cb);
+DHT22.fetch(cb);
+TSL2561.fetch(cb);
 
-  console.log(data.sensor_type + ': ' +
-    data.value.toFixed(2) + data.unit_display);
-}, refreshTimeInSec);
+// DHT22.fetchInterval(cb, refreshTimeInSec);
 
 module.exports = app;

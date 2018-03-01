@@ -20,7 +20,6 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
-    "node-dht-sensor": "*",
     "raspi-sensors": "^0.2.11"
   }
 }
