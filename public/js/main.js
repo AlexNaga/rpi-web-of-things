@@ -25,8 +25,7 @@ window.onload = () => {
     let sensorType = data.type;
     let sensorValue = data.value;
 
-    // updateChart(sensorValue);
-    console.log(data);
+    updateChart(sensorValue);
   });
 
   socket.on('bmp180_pressure', (data) => {
@@ -37,8 +36,13 @@ window.onload = () => {
     // console.log(data);
   });
 
-  socket.on('TSL2561', (data) => {
-    // console.log(data);
+  socket.on('tsl2561_light', (data) => {
+    let sensorModel = data.sensor_type;
+    let sensorType = data.type;
+    let sensorValue = data.value;
+    
+    updateChart(sensorValue);
+    console.log(data);
   });
 
 
@@ -58,7 +62,7 @@ window.onload = () => {
   // Used for the labels on the X axis
   let value = 1;
 
-  function updateChart() {
+  function updateChart(sensorValue) {
 
     // Remove value from far left of the chart
     function removeData(chart) {
@@ -78,12 +82,7 @@ window.onload = () => {
       chart.update();
     }
 
-    addData(chartBMP180, value);
+    addData(chartBMP180, sensorValue);
     removeData(chartBMP180);
-
-    value++;
   }
-
-  // Run rand_value() every 2 seconds
-  window.setInterval(updateChart, 1000);
 }
