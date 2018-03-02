@@ -23,32 +23,21 @@ let TSL2561 = new sensorLib.Sensor({
   address: 0X39
 }, 'light_sensor');
 
-BMP180.fetch(function (err, data) {
+BMP180.fetchInterval(function (err, data) {
   if (err) {
     console.error("An error occured: ", err.cause);
     return;
   }
 
   console.log(data.type);
-  
+
 
   if (data.type === "Temperature") {
     io.sockets.emit('bmp180_temp', data);
   } else {
     io.sockets.emit('bmp180_pressure', data);
   }
-});
-
-// BMP180.fetchInterval(function (err, data) {
-//   if (err) {
-//     console.error("An error occured: ", err.cause);
-//     return;
-//   }
-//   console.log(data);
-
-//   let sensorModel = data.sensor_type;
-//   io.sockets.emit('bmp180_temp', data);
-// }, refreshTimeInSec);
+}, refreshTimeInSec);
 
 // DHT22.fetchInterval(function (err, data) {
 //   if (err) {
