@@ -1,9 +1,13 @@
-var socket = io();
+const socket = io('ws://localhost:3000');
 
-console.log('Inside Main.js');
+socket.on('BMP180', (data) => {
+  console.log(data);
+});
 
-socket.on('BMP180', function (data) {
-  console.log('Inside main.js socket');
-  
+socket.on('DHT22', (data) => {
+  console.log(data);
+});
+
+socket.on('TSL2561', (data) => {
   console.log(data);
 });
