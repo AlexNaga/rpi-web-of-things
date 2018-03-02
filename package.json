@@ -1,5 +1,5 @@
 {
-  "name": "rpi-sensors",
+  "name": "sensor-view",
   "version": "1.0.0",
   "description": "A rpi with a bunch of sensors connected to it.",
   "main": "app.js",
@@ -20,6 +20,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
-    "raspi-sensors": "^0.2.11"
+    "raspi-sensors": "^0.2.11",
+    "socket.io": "^2.0.4"
   }
 }
