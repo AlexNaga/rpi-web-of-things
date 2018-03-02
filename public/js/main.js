@@ -75,28 +75,28 @@ window.onload = () => {
   socket.on('dht22_temperature', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value;
+    let sensorValue = data.value.toFixed(2);
     updateChart(temperatureChart, sensorValue);
   });
 
   socket.on('dht22_humidity', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value;
+    let sensorValue = data.value.toFixed(2);
     updateChart(humidityChart, sensorValue);
   });
 
   socket.on('bmp180_pressure', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value;
+    let sensorValue = data.value.toFixed(2);
     updateChart(pressureChart, sensorValue);
   });
 
   socket.on('tsl2561_light', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value;
+    let sensorValue = data.value.toFixed(2);
     updateChart(lightChart, sensorValue);
   });
 
