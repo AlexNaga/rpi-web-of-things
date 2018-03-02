@@ -6,7 +6,7 @@ let data = {
   labels: initValues,
   datasets: [
     {
-      label: "Temperature",
+      label: "Pressure",
       data: initValues,
 
       // Styling for the chart
@@ -46,7 +46,7 @@ window.onload = () => {
     }
   });
 
-  let updateChart = (sensorValue) => {
+  function updateChart(sensorValue) {
 
     // Remove value from far left of the chart
     function removeData(chart) {
