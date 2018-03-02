@@ -1,84 +1,73 @@
-window.onload = function () {
-  const socket = io('ws://192.168.10.223:3000');
+var N = 10;
+// Array filled with N values at '0'
+var zero_array = [];
 
-  socket.on('bmp180_temp', (data) => {
-    let sensorModel = data.sensor_type;
-    let sensorType = data.type;
-    let sensorValue = data.value;
+for (i = 0; i < N; i++)
+  zero_array.push(0);
 
-    updateChart(sensorValue);
-    console.log(data);
-  });
-
-  socket.on('bmp180_pressure', (data) => {
-    // console.log(data);
-  });
-
-  socket.on('DHT22', (data) => {
-    // console.log(data);
-  });
-
-  socket.on('TSL2561', (data) => {
-    // console.log(data);
-  });
-
-  let dps = [];
-  let chart = new CanvasJS.Chart("chart_bmp180_temp", {
-    exportEnabled: true,
-    title: {
-      text: "Temperature via BMP180"
-    },
-    axisY: {
-      includeZero: true
-    },
-    data: [{
-      type: "spline",
-      markerSize: 5,
-      dataPoints: dps
-    }]
-  });
-
-  let xVal = 0;
-  let yVal = 0;
-  let updateInterval = 1000;
-  let dataLength = 15; // number of dataPoints visible at any point
-
-  let updateChart = (sensorValue) => {
-    yVal = sensorValue;
-    dps.push({
-      x: xVal,
-      y: yVal
-    });
-
-    if (dps.length > dataLength) {
-      dps.shift();
+// The data of the chart, describe the differents sets of data you want with points, colors...
+var data = {
+  labels: zero_array,
+  datasets: [
+    {
+      label: "DataSet #1", // Name of the line
+      data: zero_array, // data to represent
+      // The following makes the line way less ugly
+      fillColor: "rgba(151,187,205,0.2)",
+      strokeColor: "rgba(151,187,205,1)",
+      pointColor: "rgba(151,187,205,1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(151,187,205,1)"
     }
+  ]
+};
 
-    chart.render();
-  };
+// We wait for everything to be loaded
+window.onload = function main() {
 
-  updateChart(dataLength);
-  setInterval(() => {
-    updateChart();
-    xVal++
-  }, updateInterval);
+  // Get the context of the canvas
+  var ctx = document.getElementById("myChart").getContext("2d");
 
-
-  var ctx = document.getElementById("myChart").getContext('2d');
-
-  var myLineChart = new Chart(ctx, {
+  // Create the Chart object
+  var line_example_chart = new Chart(ctx, {
     type: 'line',
-    data: {
-      label: "Temperature via BMP180"
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
+    data: data
   });
+
+  // Used for the labels on the X axis
+  var label_idx = 1;
+  var rand_val = 0;
+
+  // Function to execute to remove then add a new random value to the chart
+  function rand_value() {
+    // Generate a random integer
+    rand_val = rand_val + Math.round(5 + Math.random() * (-5 - 5));
+    console.log(rand_val);
+    
+    
+    // Remove the point at the far left of the chart
+    function removeData(chart) {
+      chart.data.labels.shift();
+      chart.data.datasets.forEach((dataset) => {
+        dataset.data.shift();
+      });
+      chart.update();
+    }
+
+    removeData(line_example_chart);
+
+    // Add the random value at the far right of the chart
+    function addData(chart, label, data) {
+      chart.data.labels.push(label);
+      chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+      });
+      chart.update();
+    }
+
+    addData(line_example_chart, label_idx++, [rand_val]);
+  }
+  // Run rand_value() every 2 seconds
+  window.setInterval(rand_value, 2000);
 }
