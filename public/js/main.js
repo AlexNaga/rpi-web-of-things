@@ -57,6 +57,7 @@ window.onload = function () {
     chart.render();
   };
 
+  updateChart(dataLength);
   setInterval(() => {
     updateChart();
     xVal++
