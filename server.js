@@ -28,10 +28,12 @@ BMP180.fetch(function (err, data) {
     console.error("An error occured: ", err.cause);
     return;
   }
-  console.log(data);
 
-  let sensorModel = data.sensor_type;
-  io.sockets.emit('bmp180_temp', data);
+  if (data.type === "Temperature") {
+    io.sockets.emit('bmp180_temp', data);
+  } else {
+    io.sockets.emit('bmp180_pressure', data);
+  }
 });
 
 // BMP180.fetchInterval(function (err, data) {

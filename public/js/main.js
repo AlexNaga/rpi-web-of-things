@@ -9,6 +9,10 @@ window.onload = function () {
     console.log(data);
   });
 
+  socket.on('bmp180_pressure', (data) => {
+    // console.log(data);
+  });
+
   socket.on('DHT22', (data) => {
     // console.log(data);
   });
