@@ -23,7 +23,7 @@ let TSL2561 = new sensorLib.Sensor({
   address: 0X39
 }, 'light_sensor');
 
-BMP180.fetchInterval((err, data) => {
+BMP180.fetchInterval(function (err, data) {
   if (err) {
     console.error("An error occured: ", err.cause);
     return;
@@ -33,7 +33,7 @@ BMP180.fetchInterval((err, data) => {
   io.sockets.emit('bmp180_temp', data);
 }, refreshTimeInSec);
 
-DHT22.fetchInterval((err, data) => {
+DHT22.fetchInterval(function (err, data) {
   if (err) {
     console.error("An error occured: ", err.cause);
     return;
@@ -43,7 +43,7 @@ DHT22.fetchInterval((err, data) => {
   io.sockets.emit(sensorModel, data);
 }, refreshTimeInSec);
 
-TSL2561.fetchInterval((err, data) => {
+TSL2561.fetchInterval(function (err, data) {
   if (err) {
     console.error("An error occured: ", err.cause);
     return;
