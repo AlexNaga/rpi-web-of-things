@@ -74,17 +74,10 @@ let cb = (err, data) => {
 // TSL2561.fetch(cb);
 
 BMP180.fetchInterval(cb, refreshTimeInSec);
-var socket = io();
 
 function sendToClient(data) {
-  socket.emit('message', { for: 'everyone' });
+  var socket = io();
+  socket.emit('BMP180', data);
 }
-
-io.on('connection', function(socket){
-  socket.on('message', function(msg){
-    io.emit('message', msg);
-  });
-});
-
 
 module.exports = app;
