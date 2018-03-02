@@ -89,14 +89,14 @@ window.onload = () => {
   socket.on('bmp180_pressure', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value);
+    let sensorValue = data.value;
     updateChart(pressureChart, sensorValue);
   });
 
   socket.on('tsl2561_light', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value);
+    let sensorValue = data.value;
     updateChart(lightChart, sensorValue);
   });
 
