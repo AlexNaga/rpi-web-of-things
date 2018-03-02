@@ -75,14 +75,14 @@ window.onload = () => {
   socket.on('dht22_temperature', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value.toFixed(2);
+    let sensorValue = data.value.toFixed(1);
     updateChart(temperatureChart, sensorValue);
   });
 
   socket.on('dht22_humidity', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
-    let sensorValue = data.value;
+    let sensorValue = data.value.toFixed(1);
     updateChart(humidityChart, sensorValue);
   });
 
