@@ -29,6 +29,9 @@ BMP180.fetch(function (err, data) {
     return;
   }
 
+  console.log(data.type);
+  
+
   if (data.type === "Temperature") {
     io.sockets.emit('bmp180_temp', data);
   } else {

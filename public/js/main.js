@@ -2,6 +2,8 @@ window.onload = function () {
   const socket = io('ws://192.168.10.223:3000');
 
   socket.on('bmp180_temp', (data) => {
+    console.log("Inside bmp180_temp");
+    
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
@@ -11,6 +13,7 @@ window.onload = function () {
 
   socket.on('bmp180_pressure', (data) => {
     // console.log(data);
+    console.log("Inside bmp180_pressure");
   });
 
   socket.on('DHT22', (data) => {
