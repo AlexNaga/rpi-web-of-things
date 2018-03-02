@@ -1,6 +1,8 @@
 // Create array for initial values
 let temperatureInit = Array(10).fill(0);
+let humidityInit = Array(10).fill(0);
 let pressureInit = Array(10).fill(0);
+let lightInit = Array(10).fill(0);
 
 // The data of the chart, config styling here
 let temperatureData = {
@@ -9,6 +11,22 @@ let temperatureData = {
     {
       label: "Temperature (°C)",
       data: temperatureInit,
+
+      // Styling for the chart
+      backgroundColor: "#F02311",
+      borderColor: "#F02311",
+      fill: false,
+      pointRadius: 5
+    }
+  ]
+};
+
+let humidityData = {
+  labels: humidityInit,
+  datasets: [
+    {
+      label: "Humidity (%)",
+      data: humidityInit,
 
       // Styling for the chart
       backgroundColor: "#F02311",
@@ -35,6 +53,22 @@ let pressureData = {
   ]
 };
 
+let lightData = {
+  labels: lightInit,
+  datasets: [
+    {
+      label: "Brightness (Lux)",
+      data: lightInit,
+
+      // Styling for the chart
+      backgroundColor: "#F02311",
+      borderColor: "#F02311",
+      fill: false,
+      pointRadius: 5
+    }
+  ]
+};
+
 window.onload = () => {
   const socket = io('ws://192.168.10.223:3000');
 
@@ -45,11 +79,25 @@ window.onload = () => {
     updateChart(temperatureChart, sensorValue);
   });
 
+  socket.on('dht22_humidity', (data) => {
+    let sensorModel = data.sensor_type;
+    let sensorType = data.type;
+    let sensorValue = data.value;
+    updateChart(humidityChart, sensorValue);
+  });
+
   socket.on('bmp180_pressure', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
     updateChart(pressureChart, sensorValue);
+  });
+
+  socket.on('tsl2561_light', (data) => {
+    let sensorModel = data.sensor_type;
+    let sensorType = data.type;
+    let sensorValue = data.value;
+    updateChart(lightChart, sensorValue);
   });
 
 
@@ -64,7 +112,7 @@ window.onload = () => {
     options: {
       title: {
         display: true,
-        text: 'Pressure via BMP180'
+        text: 'Temperature via DHT22'
       },
       tooltips: {
         mode: 'index',
@@ -79,7 +127,35 @@ window.onload = () => {
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Pascal'
+            labelString: 'Degree Celsius'
+          }
+        }]
+      }
+    }
+  });
+
+  let humidityChart = new Chart(humidityCanvas, {
+    type: 'line',
+    data: humidityData,
+    options: {
+      title: {
+        display: true,
+        text: 'Humidity via DHT22'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Percent'
           }
         }]
       }
@@ -108,6 +184,34 @@ window.onload = () => {
           scaleLabel: {
             display: true,
             labelString: 'Pascal'
+          }
+        }]
+      }
+    }
+  });
+
+  let lightChart = new Chart(lightCanvas, {
+    type: 'line',
+    data: lightData,
+    options: {
+      title: {
+        display: true,
+        text: 'Brightness via TSL2561'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Lux'
           }
         }]
       }
