@@ -30,19 +30,22 @@ window.onload = () => {
     updateChart(sensorValue);
   });
 
-  let ctx = document.getElementById("chart_pressure").getContext("2d");
+  let pressureCanvas = document.getElementById("chart_temperature").getContext("2d");
+  let humidityCanvas = document.getElementById("chart_humidity").getContext("2d");
+  let pressureCanvas = document.getElementById("chart_pressure").getContext("2d");
+  let lightCanvas = document.getElementById("chart_light").getContext("2d");
 
-  let charts = {
-
-  };
-
-  let chartBMP180 = new Chart(ctx, {
+  let pressureChart = new Chart(pressureCanvas, {
     type: 'line',
     data: data,
     options: {
       title: {
         display: true,
         text: 'Pressure via BMP180'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
       },
       hover: {
         mode: 'nearest',
@@ -53,7 +56,7 @@ window.onload = () => {
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Value'
+            labelString: 'Pascal'
           }
         }]
       }
@@ -80,7 +83,7 @@ window.onload = () => {
       chart.update();
     }
 
-    addData(chartBMP180, sensorValue);
-    removeData(chartBMP180);
+    addData(pressureChart, sensorValue);
+    removeData(pressureChart);
   }
 }
