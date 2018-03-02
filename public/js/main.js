@@ -1,5 +1,5 @@
 window.onload = function () {
-  const socket = io('ws://localhost:3000');
+  const socket = io('ws://192.168.10.223:3000');
 
   socket.on('BMP180', (data) => {
     let sensorModel = data.sensor_type;
