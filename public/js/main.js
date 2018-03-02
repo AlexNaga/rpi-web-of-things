@@ -8,20 +8,42 @@ let data = {
     {
       label: "Temperature",
       data: initValues, // data to represent
+      // Styling for the chart
       backgroundColor: "#F02311",
       borderColor: "#F02311",
       fill: false,
-
-      // Styling for the chart
-
+      pointRadius: 5
     }
   ]
 };
 
 window.onload = () => {
+  const socket = io('ws://192.168.10.223:3000');
+
+  socket.on('bmp180_temp', (data) => {
+    let sensorModel = data.sensor_type;
+    let sensorType = data.type;
+    let sensorValue = data.value;
+
+    // updateChart(sensorValue);
+    console.log(data);
+  });
+
+  socket.on('bmp180_pressure', (data) => {
+    // console.log(data);
+  });
+
+  socket.on('DHT22', (data) => {
+    // console.log(data);
+  });
+
+  socket.on('TSL2561', (data) => {
+    // console.log(data);
+  });
+
+
   let ctx = document.getElementById("chart_bmp180_temp").getContext("2d");
 
-  // Create the Chart object
   let chartBMP180 = new Chart(ctx, {
     type: 'line',
     data: data,
@@ -36,7 +58,6 @@ window.onload = () => {
   // Used for the labels on the X axis
   let value = 1;
 
-  // Function to execute to remove then add a new random value to the chart
   function updateChart() {
 
     // Remove value from far left of the chart
@@ -64,5 +85,5 @@ window.onload = () => {
   }
 
   // Run rand_value() every 2 seconds
-  window.setInterval(updateChart, 3000);
+  window.setInterval(updateChart, 1000);
 }
