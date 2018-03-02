@@ -25,7 +25,8 @@ window.onload = () => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
-
+    console.log(data);
+    
     updateChart(sensorValue);
   });
 
