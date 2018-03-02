@@ -6,7 +6,7 @@ let temperatureData = {
   labels: initValues,
   datasets: [
     {
-      label: "Pressure (Pa)",
+      label: "Temperature (°C)",
       data: initValues,
 
       // Styling for the chart
@@ -57,7 +57,7 @@ window.onload = () => {
   let pressureCanvas = document.getElementById("chart_pressure").getContext("2d");
   let lightCanvas = document.getElementById("chart_light").getContext("2d");
 
-  let temperatureChart = new Chart(pressureCanvas, {
+  let temperatureChart = new Chart(temperatureCanvas, {
     type: 'line',
     data: temperatureData,
     options: {
