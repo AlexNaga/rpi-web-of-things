@@ -29,11 +29,9 @@ BMP180.fetchInterval(function (err, data) {
     return;
   }
 
-  console.log(data.type);
-
-
   if (data.type === "Temperature") {
     io.sockets.emit('bmp180_temp', data);
+    console.log(data.value);    
   } else {
     io.sockets.emit('bmp180_pressure', data);
   }
