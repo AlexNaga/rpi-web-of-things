@@ -2,7 +2,23 @@
 let initValues = Array(10).fill(0);
 
 // The data of the chart, config styling here
-let data = {
+let temperatureData = {
+  labels: initValues,
+  datasets: [
+    {
+      label: "Pressure (Pa)",
+      data: initValues,
+
+      // Styling for the chart
+      backgroundColor: "#F02311",
+      borderColor: "#F02311",
+      fill: false,
+      pointRadius: 5
+    }
+  ]
+};
+
+let pressureData = {
   labels: initValues,
   datasets: [
     {
@@ -43,7 +59,7 @@ window.onload = () => {
 
   let temperatureChart = new Chart(pressureCanvas, {
     type: 'line',
-    data: data,
+    data: temperatureData,
     options: {
       title: {
         display: true,
@@ -71,7 +87,7 @@ window.onload = () => {
 
   let pressureChart = new Chart(pressureCanvas, {
     type: 'line',
-    data: data,
+    data: pressureData,
     options: {
       title: {
         display: true,
