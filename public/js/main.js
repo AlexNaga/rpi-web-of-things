@@ -21,6 +21,13 @@ let data = {
 window.onload = () => {
   const socket = io('ws://192.168.10.223:3000');
 
+  socket.on('dht22_temperature', (data) => {
+    let sensorModel = data.sensor_type;
+    let sensorType = data.type;
+    let sensorValue = data.value;
+    updateChart(temperatureCanvas, sensorValue);
+  });
+
   socket.on('bmp180_pressure', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
