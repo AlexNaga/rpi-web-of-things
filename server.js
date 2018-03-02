@@ -13,15 +13,15 @@ let BMP180 = new sensorLib.Sensor({
   address: 0x77
 }, 'temp_pressure_sensor');
 
-// let DHT22 = new sensorLib.Sensor({
-//   type: 'DHT22',
-//   pin: 0X7
-// }, 'temp_humidity_sensor');
+let DHT22 = new sensorLib.Sensor({
+  type: 'DHT22',
+  pin: 0X7
+}, 'temp_humidity_sensor');
 
-// let TSL2561 = new sensorLib.Sensor({
-//   type: 'TSL2561',
-//   address: 0X39
-// }, 'light_sensor');
+let TSL2561 = new sensorLib.Sensor({
+  type: 'TSL2561',
+  address: 0X39
+}, 'light_sensor');
 
 BMP180.fetchInterval(function (err, data) {
   if (err) {
