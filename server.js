@@ -23,45 +23,37 @@ let TSL2561 = new sensorLib.Sensor({
   address: 0X39
 }, 'light_sensor');
 
-// BMP180.fetchInterval(function (err, data) {
-//   if (err) {
-//     console.error('An error occured: ', err.cause);
-//     return;
-//   }
-
-//   if (data.type === 'Pressure') {
-//     io.sockets.emit('bmp180_pressure', data);
-//   }
-// }, refreshTimeInSec);
-
-// DHT22.fetchInterval(function (err, data) {
-//   if (err) {
-//     console.error('An error occured: ', err.cause);
-//     return;
-//   }
-
-//   if (data.type === 'Temperature') {
-//     io.sockets.emit('dht22_temperature', data);
-//   } else {
-//     io.sockets.emit('dht22_humidity', data);
-//   }
-// }, refreshTimeInSec);
-
-// TSL2561.fetchInterval(function (err, data) {
-//   if (err) {
-//     console.error('An error occured: ', err.cause);
-//     return;
-//   }
-
-//   io.sockets.emit('tsl2561_light', data);
-// }, refreshTimeInSec);
-
-TSL2561.fetch(function (err, data) {
+BMP180.fetchInterval(function (err, data) {
   if (err) {
     console.error('An error occured: ', err.cause);
     return;
   }
-  console.log(data);
-});
+
+  if (data.type === 'Pressure') {
+    io.sockets.emit('bmp180_pressure', data);
+  }
+}, refreshTimeInSec);
+
+DHT22.fetchInterval(function (err, data) {
+  if (err) {
+    console.error('An error occured: ', err.cause);
+    return;
+  }
+
+  if (data.type === 'Temperature') {
+    io.sockets.emit('dht22_temperature', data);
+  } else {
+    io.sockets.emit('dht22_humidity', data);
+  }
+}, refreshTimeInSec);
+
+TSL2561.fetchInterval(function (err, data) {
+  if (err) {
+    console.error('An error occured: ', err.cause);
+    return;
+  }
+
+  io.sockets.emit('tsl2561_light', data);
+}, refreshTimeInSec);
 
 server.listen(port);
