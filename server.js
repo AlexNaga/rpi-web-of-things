@@ -29,7 +29,6 @@ BMP180.fetchInterval(function (err, data) {
     return;
   }
   console.log(data);
-  
 
   let sensorModel = data.sensor_type;
   io.sockets.emit('bmp180_temp', data);
