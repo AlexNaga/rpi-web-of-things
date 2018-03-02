@@ -50,8 +50,6 @@ window.onload = function () {
       y: yVal
     });
 
-    setInterval(function () { xVal++; }, 1000);
-
     if (dps.length > dataLength) {
       dps.shift();
     }
@@ -60,6 +58,8 @@ window.onload = function () {
   };
 
   updateChart(dataLength);
-  setInterval(() => { updateChart() }, updateInterval);
-
+  setInterval(() => {
+    updateChart();
+    xVal++
+  }, updateInterval);
 }
