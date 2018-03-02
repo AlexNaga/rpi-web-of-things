@@ -21,33 +21,19 @@ let data = {
 window.onload = () => {
   const socket = io('ws://192.168.10.223:3000');
 
-  socket.on('bmp180_temp', (data) => {
-    let sensorModel = data.sensor_type;
-    let sensorType = data.type;
-    let sensorValue = data.value;
-
-    updateChart(sensorValue);
-  });
-
   socket.on('bmp180_pressure', (data) => {
-    // console.log(data);
-  });
-
-  socket.on('DHT22', (data) => {
-    // console.log(data);
-  });
-
-  socket.on('tsl2561_light', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
 
     updateChart(sensorValue);
-    console.log(data);
   });
 
+  let ctx = document.getElementById("chart_pressure").getContext("2d");
 
-  let ctx = document.getElementById("chart_temp").getContext("2d");
+  let charts = {
+
+  };
 
   let chartBMP180 = new Chart(ctx, {
     type: 'line',
@@ -55,7 +41,7 @@ window.onload = () => {
     options: {
       title: {
         display: true,
-        text: 'Temperature via BMP180'
+        text: 'Pressure via BMP180'
       }
     }
   });
