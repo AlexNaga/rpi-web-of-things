@@ -50,11 +50,12 @@ window.onload = function () {
       y: yVal
     });
 
-    xVal++;
+    setInterval(function () { xVal++; }, 1000);
+
     if (dps.length > dataLength) {
       dps.shift();
     }
-    
+
     chart.render();
   };
 
