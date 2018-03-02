@@ -5,7 +5,7 @@ window.onload = function () {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
-    
+
     updateChart(sensorValue);
     console.log(data);
   });
@@ -41,22 +41,20 @@ window.onload = function () {
   let xVal = 0;
   let yVal = 0;
   let updateInterval = 1000;
-  let dataLength = 15; // number of dataPoints visible at any point
+  let dataLength = 30; // number of dataPoints visible at any point
 
   let updateChart = (sensorValue) => {
-    var count = count || 1;
-    // count is number of times loop runs to generate random dataPoints.
-    for (let j = 0; j < count; j++) {
-      yVal = sensorValue;
-      dps.push({
-        x: xVal,
-        y: yVal
-      });
-      xVal++;
-    }
+    yVal = sensorValue;
+    dps.push({
+      x: xVal,
+      y: yVal
+    });
+
+    xVal++;
     if (dps.length > dataLength) {
       dps.shift();
     }
+    
     chart.render();
   };
 
