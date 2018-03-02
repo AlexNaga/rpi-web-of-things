@@ -7,7 +7,8 @@ let data = {
   datasets: [
     {
       label: "Temperature",
-      data: initValues, // data to represent
+      data: initValues,
+
       // Styling for the chart
       backgroundColor: "#F02311",
       borderColor: "#F02311",
@@ -40,13 +41,13 @@ window.onload = () => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
-    
+
     updateChart(sensorValue);
     console.log(data);
   });
 
 
-  let ctx = document.getElementById("chart_bmp180_temp").getContext("2d");
+  let ctx = document.getElementById("chart_temp").getContext("2d");
 
   let chartBMP180 = new Chart(ctx, {
     type: 'line',
@@ -59,10 +60,7 @@ window.onload = () => {
     }
   });
 
-  // Used for the labels on the X axis
-  let value = 1;
-
-  function updateChart(sensorValue) {
+  let updateChart = (sensorValue) => {
 
     // Remove value from far left of the chart
     function removeData(chart) {

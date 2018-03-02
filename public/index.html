@@ -13,7 +13,15 @@
     <div class="container">
       <h1 class="title">SensorView</h1>
       <p class="subtitle">Overview for a bunch of sensors connected to a Raspberry Pi 3 Model B. </p>
-      <canvas id="chart_bmp180_temp" width="400" height="200"></canvas>
+
+      <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="chart"></canvas>
+        <canvas id="chart_temp" width="400" height="200"></canvas>
+        <canvas id="chart_humidity" width="400" height="200"></canvas>
+        <canvas id="chart_pressure" width="400" height="200"></canvas>
+        <canvas id="chart_light" width="400" height="200"></canvas>
+      </div>
+
     </div>
   </section>
 </body>
