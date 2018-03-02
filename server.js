@@ -66,7 +66,7 @@ let TSL2561 = new sensorLib.Sensor({
 //   io.sockets.emit('tsl2561_light', data);
 // }, refreshTimeInSec);
 
-BMP180.fetch(function (err, data) {
+DHT22.fetch(function (err, data) {
   if (err) {
     console.error("An error occured: ", err.cause);
     return;
