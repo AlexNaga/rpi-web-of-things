@@ -106,6 +106,9 @@ window.onload = () => {
   let pressureCanvas = document.getElementById("chart_pressure").getContext("2d");
   let lightCanvas = document.getElementById("chart_light").getContext("2d");
 
+  Chart.defaults.global.defaultFontFamily = "Ubuntu";
+  Chart.defaults.global.defaultFontColor = 'red';
+
   let temperatureChart = new Chart(temperatureCanvas, {
     type: 'line',
     data: temperatureData,
