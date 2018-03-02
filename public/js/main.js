@@ -25,7 +25,7 @@ window.onload = () => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
-    updateChart(temperatureCanvas, sensorValue);
+    updateChart(temperatureChart, sensorValue);
   });
 
   socket.on('bmp180_pressure', (data) => {
@@ -40,6 +40,34 @@ window.onload = () => {
   let humidityCanvas = document.getElementById("chart_humidity").getContext("2d");
   let pressureCanvas = document.getElementById("chart_pressure").getContext("2d");
   let lightCanvas = document.getElementById("chart_light").getContext("2d");
+
+  let temperatureChart = new Chart(pressureCanvas, {
+    type: 'line',
+    data: data,
+    options: {
+      title: {
+        display: true,
+        text: 'Pressure via BMP180'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Pascal'
+          }
+        }]
+      }
+    }
+  });
 
   let pressureChart = new Chart(pressureCanvas, {
     type: 'line',
