@@ -41,7 +41,7 @@ window.onload = function () {
   let xVal = 0;
   let yVal = 0;
   let updateInterval = 1000;
-  let dataLength = 30; // number of dataPoints visible at any point
+  let dataLength = 15; // number of dataPoints visible at any point
 
   let updateChart = (sensorValue) => {
     yVal = sensorValue;
