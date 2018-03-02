@@ -30,7 +30,7 @@ window.onload = () => {
     updateChart(sensorValue);
   });
 
-  let pressureCanvas = document.getElementById("chart_temperature").getContext("2d");
+  let temperatureCanvas = document.getElementById("chart_temperature").getContext("2d");
   let humidityCanvas = document.getElementById("chart_humidity").getContext("2d");
   let pressureCanvas = document.getElementById("chart_pressure").getContext("2d");
   let lightCanvas = document.getElementById("chart_light").getContext("2d");
