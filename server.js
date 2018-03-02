@@ -40,9 +40,11 @@ BMP180.fetchInterval(function (err, data) {
 //     console.error("An error occured: ", err.cause);
 //     return;
 //   }
+//   console.log(data);
+
 
 //   let sensorModel = data.sensor_type;
-//   io.sockets.emit(sensorModel, data);
+//   io.sockets.emit('dht22_humidity', data);
 // }, refreshTimeInSec);
 
 // TSL2561.fetchInterval(function (err, data) {
@@ -50,9 +52,11 @@ BMP180.fetchInterval(function (err, data) {
 //     console.error("An error occured: ", err.cause);
 //     return;
 //   }
+//   console.log(data);
+
 
 //   let sensorModel = data.sensor_type;
-//   io.sockets.emit(sensorModel, data);
+//   io.sockets.emit('tsl2561_light', data);
 // }, refreshTimeInSec);
 
 // let jsonObj = {
