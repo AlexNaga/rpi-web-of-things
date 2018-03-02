@@ -1,48 +1,61 @@
-const socket = io('ws://localhost:3000');
+window.onload = function () {
+  const socket = io('ws://localhost:3000');
 
-socket.on('BMP180', (data) => {
-  let sensorModel = data.sensor_type;
-  let sensorType = data.type;
+  socket.on('BMP180', (data) => {
+    let sensorModel = data.sensor_type;
+    let sensorType = data.type;
+    let sensorValue = data.value;
+    updateChart(sensorValue);
+    console.log(data);
+  });
 
-  console.log(sensorModel);
-  console.log(sensorType);  
-});
+  socket.on('DHT22', (data) => {
+    console.log(data);
+  });
 
-socket.on('DHT22', (data) => {
-  console.log(data);
-});
+  socket.on('TSL2561', (data) => {
+    console.log(data);
+  });
 
-socket.on('TSL2561', (data) => {
-  console.log(data);
-});
-
-var ctx = document.getElementById("chart").getContext('2d');
-
-var chartCanvas = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1
+  let dps = [];
+  let chart = new CanvasJS.Chart("chartBMP180", {
+    exportEnabled: true,
+    title: {
+      text: "Light via BMP180"
+    },
+    axisY: {
+      includeZero: true
+    },
+    data: [{
+      type: "spline",
+      markerSize: 5,
+      dataPoints: dps
     }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
+  });
+
+  let xVal = 0;
+  let yVal = 0;
+  let updateInterval = 1000;
+  let dataLength = 15; // number of dataPoints visible at any point
+
+  let updateChart = (sensorValue) => {
+    var count = count || 1;
+    // count is number of times loop runs to generate random dataPoints.
+    for (let j = 0; j < count; j++) {
+      yVal = sensorValue;
+      dps.push({
+        x: xVal,
+        y: yVal
+      });
+      xVal++;
     }
-  }
-});
+    if (dps.length > dataLength) {
+      dps.shift();
+    }
+    chart.render();
+  };
+
+  updateChart(dataLength);
+  setInterval(() => { updateChart() }, updateInterval);
+
+}
