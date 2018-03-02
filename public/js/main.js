@@ -1,13 +1,14 @@
 // Create array for initial values
-let initValues = Array(10).fill(0);
+let temperatureInit = Array(10).fill(0);
+let pressureInit = Array(10).fill(0);
 
 // The data of the chart, config styling here
 let temperatureData = {
-  labels: initValues,
+  labels: temperatureInit,
   datasets: [
     {
       label: "Temperature (°C)",
-      data: initValues,
+      data: temperatureInit,
 
       // Styling for the chart
       backgroundColor: "#F02311",
@@ -19,11 +20,11 @@ let temperatureData = {
 };
 
 let pressureData = {
-  labels: initValues,
+  labels: pressureInit,
   datasets: [
     {
       label: "Pressure (Pa)",
-      data: initValues,
+      data: pressureInit,
 
       // Styling for the chart
       backgroundColor: "#F02311",
