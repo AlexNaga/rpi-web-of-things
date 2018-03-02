@@ -1,7 +1,7 @@
 // Create array for initial values
 let initValues = Array(10).fill(0);
 
-// The data of the chart, describe the differents sets of data you want with points, colors...
+// The data of the chart, config styling here
 let data = {
   labels: initValues,
   datasets: [
@@ -25,10 +25,9 @@ window.onload = () => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
-    console.log(data);
-
-    updateChart(sensorValue);
+    updateChart(pressureChart, sensorValue);
   });
+
 
   let temperatureCanvas = document.getElementById("chart_temperature").getContext("2d");
   let humidityCanvas = document.getElementById("chart_humidity").getContext("2d");
@@ -63,7 +62,8 @@ window.onload = () => {
     }
   });
 
-  function updateChart(sensorValue) {
+
+  function updateChart(chart, sensorValue) {
 
     // Remove value from far left of the chart
     function removeData(chart) {
@@ -83,7 +83,7 @@ window.onload = () => {
       chart.update();
     }
 
-    addData(pressureChart, sensorValue);
-    removeData(pressureChart);
+    addData(chart, sensorValue);
+    removeData(chart);
   }
 }
