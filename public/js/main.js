@@ -6,7 +6,7 @@ let data = {
   labels: initValues,
   datasets: [
     {
-      label: "Pressure",
+      label: "Pressure (Pa)",
       data: initValues,
 
       // Styling for the chart
@@ -26,7 +26,7 @@ window.onload = () => {
     let sensorType = data.type;
     let sensorValue = data.value;
     console.log(data);
-    
+
     updateChart(sensorValue);
   });
 
@@ -43,6 +43,19 @@ window.onload = () => {
       title: {
         display: true,
         text: 'Pressure via BMP180'
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Value'
+          }
+        }]
       }
     }
   });
