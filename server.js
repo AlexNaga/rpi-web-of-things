@@ -23,21 +23,35 @@ let TSL2561 = new sensorLib.Sensor({
   address: 0X39
 }, 'light_sensor');
 
-// Define a callback
-let cb = (err, data) => {
+BMP180.fetchInterval((err, data) => {
   if (err) {
-    console.error("An error occured!");
-    console.error(err.cause);
+    console.error("An error occured: ", err.cause);
     return;
   }
 
-  console.log(data);
-  sendToClient(data);
-}
+  let sensorModel = data.sensor_type;
+  io.sockets.emit('bmp180_temp', data);
+}, refreshTimeInSec);
 
-BMP180.fetchInterval(cb, refreshTimeInSec);
-DHT22.fetchInterval(cb, refreshTimeInSec);
-TSL2561.fetchInterval(cb, refreshTimeInSec);
+DHT22.fetchInterval((err, data) => {
+  if (err) {
+    console.error("An error occured: ", err.cause);
+    return;
+  }
+
+  let sensorModel = data.sensor_type;
+  io.sockets.emit(sensorModel, data);
+}, refreshTimeInSec);
+
+TSL2561.fetchInterval((err, data) => {
+  if (err) {
+    console.error("An error occured: ", err.cause);
+    return;
+  }
+
+  let sensorModel = data.sensor_type;
+  io.sockets.emit(sensorModel, data);
+}, refreshTimeInSec);
 
 // let jsonObj = {
 //   type: 'Light',                                    // The type of the value of the sensor
@@ -49,10 +63,5 @@ TSL2561.fetchInterval(cb, refreshTimeInSec);
 //   sensor_name: 'light_sensor',                      // The name of the sensor (so you can use the same callback for multiple sensors)
 //   sensor_type: 'BMP180'                            // The type of the sensor
 // };
-
-let sendToClient = (data) => {
-  let sensorModel = data.sensor_type;
-  io.sockets.emit(sensorModel, data);
-}
 
 server.listen(port);

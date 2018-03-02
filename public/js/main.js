@@ -1,7 +1,7 @@
 window.onload = function () {
   const socket = io('ws://192.168.10.223:3000');
 
-  socket.on('BMP180', (data) => {
+  socket.on('bmp180_temp', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value;
@@ -10,18 +10,18 @@ window.onload = function () {
   });
 
   socket.on('DHT22', (data) => {
-    console.log(data);
+    // console.log(data);
   });
 
   socket.on('TSL2561', (data) => {
-    console.log(data);
+    // console.log(data);
   });
 
   let dps = [];
-  let chart = new CanvasJS.Chart("chartBMP180", {
+  let chart = new CanvasJS.Chart("chart_bmp180_temp", {
     exportEnabled: true,
     title: {
-      text: "Light via BMP180"
+      text: "Temperature via BMP180"
     },
     axisY: {
       includeZero: true
