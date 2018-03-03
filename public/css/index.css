@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.flex-container > div 
+.flex-container > canvas 
 {
   flex: 1; 
 }
