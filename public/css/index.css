@@ -12,6 +12,7 @@
 }
 
 .flex-container {
+  background-color: blue;  
   position: relative;
   height: 40vh;
   width:80vw;
