@@ -97,18 +97,7 @@ window.onload = () => {
 
 
   Chart.defaults.global.defaultFontFamily = 'Ubuntu';
-
   Chart.defaults.global.responsive = true;
-  Chart.defaults.global.animationSteps = 50;
-  Chart.defaults.global.tooltipYPadding = 16;
-  Chart.defaults.global.tooltipCornerRadius = 0;
-  Chart.defaults.global.tooltipTitleFontStyle = "normal";
-  Chart.defaults.global.tooltipFillColor = "white";
-  Chart.defaults.global.animationEasing = "easeOutBounce";
-  Chart.defaults.global.scaleLineColor = "black";
-  Chart.defaults.global.scaleFontSize = 16;
-  Chart.defaults.global.showScale = false;
-  Chart.defaults.global.pointDotStrokeWidth = 2;
 
   let temperatureCanvas = document.getElementById('chart_temperature').getContext('2d');
   let temperatureChart = new Chart(temperatureCanvas, {
