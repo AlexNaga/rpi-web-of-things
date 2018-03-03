@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
   <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,20 +16,23 @@
       <h1 class="title">SensorView</h1>
       <p class="subtitle">Real-time overview for a bunch of sensors connected to a Raspberry Pi 3 Model B. </p>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <canvas id="chart_temperature" width="200" height="200"></canvas>
-
-          </div>
-          <div class="col-xs-6">
-            <canvas id="chart_humidity" width="200" height="200"></canvas>
-          </div>
+      <div class="columns">
+        <div class="column is-half">
+          <canvas id="chart_temperature"></canvas>
+        </div>
+        <div class="column is-half">
+          <canvas id="chart_humidity"></canvas>
         </div>
       </div>
 
-      <canvas id="chart_pressure" width="400" height="200"></canvas>
-      <canvas id="chart_light" width="400" height="200"></canvas>
+      <div class="columns">
+        <div class="column is-half">
+          <canvas id="chart_pressure"></canvas>
+        </div>
+        <div class="column is-half">
+          <canvas id="chart_light"></canvas>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -39,8 +40,6 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
 
 </html>
