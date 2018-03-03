@@ -57,11 +57,12 @@ TSL2561.fetchInterval(function (err, data) {
 }, refreshTimeInSec);
 
 server.listen(port);
-console.log('The server is running on port: ', port);
-var address,
+
+// Code for getting local IP
+let address,
   ifaces = require('os').networkInterfaces();
-for (var dev in ifaces) {
+for (let dev in ifaces) {
   ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
 }
 
-console.log(address);
+console.log('The server is running on: ' + address + ':' + port);
