@@ -72,13 +72,10 @@ let lightData = {
 
 window.onload = () => {
   // Code for getting local IP
-  let address,
-    ifaces = require('os').networkInterfaces();
-  for (let dev in ifaces) {
-    ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
-  }
+  var ip = "<?php echo $_SERVER['SERVER_ADDR']; ?>";
+  alert(ip);
 
-  const socket = io('ws://' + address + ':3000');
+  const socket = io('ws://' + ip + ':3000');
 
   socket.on('dht22_temperature', (data) => {
     let sensorModel = data.sensor_type;
