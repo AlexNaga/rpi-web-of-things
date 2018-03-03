@@ -9,12 +9,12 @@ let temperatureData = {
   labels: temperatureInit,
   datasets: [
     {
-      label: "Temperature (°C)",
+      label: 'Temperature (°C)',
       data: temperatureInit,
 
       // Styling for the chart
-      backgroundColor: "#F02311",
-      borderColor: "#F02311",
+      backgroundColor: '#F02311',
+      borderColor: '#F02311',
       fill: false,
       pointRadius: 5
     }
@@ -25,12 +25,12 @@ let humidityData = {
   labels: humidityInit,
   datasets: [
     {
-      label: "Humidity (%)",
+      label: 'Humidity (%)',
       data: humidityInit,
 
       // Styling for the chart
-      backgroundColor: "#F02311",
-      borderColor: "#F02311",
+      backgroundColor: '#F02311',
+      borderColor: '#F02311',
       fill: false,
       pointRadius: 5
     }
@@ -41,12 +41,12 @@ let pressureData = {
   labels: pressureInit,
   datasets: [
     {
-      label: "Pressure (Pa)",
+      label: 'Pressure (Pa)',
       data: pressureInit,
 
       // Styling for the chart
-      backgroundColor: "#F02311",
-      borderColor: "#F02311",
+      backgroundColor: '#F02311',
+      borderColor: '#F02311',
       fill: false,
       pointRadius: 5
     }
@@ -57,12 +57,12 @@ let lightData = {
   labels: lightInit,
   datasets: [
     {
-      label: "Brightness (Lux)",
+      label: 'Brightness (Lux)',
       data: lightInit,
 
       // Styling for the chart
-      backgroundColor: "#F02311",
-      borderColor: "#F02311",
+      backgroundColor: '#F02311',
+      borderColor: '#F02311',
       fill: false,
       pointRadius: 5
     }
@@ -71,7 +71,14 @@ let lightData = {
 
 
 window.onload = () => {
-  const socket = io('ws://192.168.10.223:3000');
+  // Code for getting local IP
+  let address,
+    ifaces = require('os').networkInterfaces();
+  for (let dev in ifaces) {
+    ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
+  }
+
+  const socket = io('ws://' + address + ':3000');
 
   socket.on('dht22_temperature', (data) => {
     let sensorModel = data.sensor_type;
@@ -96,13 +103,9 @@ window.onload = () => {
   });
 
 
-  let temperatureCanvas = document.getElementById("chart_temperature").getContext("2d");
-  let humidityCanvas = document.getElementById("chart_humidity").getContext("2d");
-  let pressureCanvas = document.getElementById("chart_pressure").getContext("2d");
-  let lightCanvas = document.getElementById("chart_light").getContext("2d");
+  Chart.defaults.global.defaultFontFamily = 'Ubuntu';
 
-  Chart.defaults.global.defaultFontFamily = "Ubuntu";
-
+  let temperatureCanvas = document.getElementById('chart_temperature').getContext('2d');
   let temperatureChart = new Chart(temperatureCanvas, {
     type: 'line',
     data: temperatureData,
@@ -131,6 +134,7 @@ window.onload = () => {
     }
   });
 
+  let humidityCanvas = document.getElementById('chart_humidity').getContext('2d');
   let humidityChart = new Chart(humidityCanvas, {
     type: 'line',
     data: humidityData,
@@ -159,6 +163,7 @@ window.onload = () => {
     }
   });
 
+  let pressureCanvas = document.getElementById('chart_pressure').getContext('2d');
   let pressureChart = new Chart(pressureCanvas, {
     type: 'line',
     data: pressureData,
@@ -187,6 +192,7 @@ window.onload = () => {
     }
   });
 
+  let lightCanvas = document.getElementById('chart_light').getContext('2d');
   let lightChart = new Chart(lightCanvas, {
     type: 'line',
     data: lightData,

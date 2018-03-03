@@ -23,6 +23,7 @@ let TSL2561 = new sensorLib.Sensor({
   address: 0X39
 }, 'light_sensor');
 
+
 DHT22.fetchInterval(function (err, data) {
   if (err) {
     console.error('An error occured: ', err.cause);
@@ -56,6 +57,7 @@ TSL2561.fetchInterval(function (err, data) {
   io.sockets.emit('tsl2561_light', data);
 }, refreshTimeInSec);
 
+
 server.listen(port);
 
 // Code for getting local IP
@@ -65,4 +67,4 @@ for (let dev in ifaces) {
   ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
 }
 
-console.log('The server is running on: ' + address + ':' + port);
+console.log('The server is running on: http://' + address + ':' + port);
