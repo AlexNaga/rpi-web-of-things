@@ -8,10 +8,10 @@ const io = require('socket.io').listen(server);
 const sensorLib = require('raspi-sensors');
 const refreshTimeInSec = 1;
 
-let DHT22 = new sensorLib.Sensor({
-  type: 'DHT22',
-  pin: 0X7
-}, 'temp_humidity_sensor');
+// let DHT22 = new sensorLib.Sensor({
+//   type: 'DHT22',
+//   pin: 0X7
+// }, 'temp_humidity_sensor');
 
 let BMP180 = new sensorLib.Sensor({
   type: 'BMP180',
@@ -24,18 +24,18 @@ let TSL2561 = new sensorLib.Sensor({
 }, 'light_sensor');
 
 
-DHT22.fetchInterval(function (err, data) {
-  if (err) {
-    console.error('An error occured: ', err.cause);
-    return;
-  }
+// DHT22.fetchInterval(function (err, data) {
+//   if (err) {
+//     console.error('An error occured: ', err.cause);
+//     return;
+//   }
 
-  if (data.type === 'Temperature') {
-    io.sockets.emit('dht22_temperature', data);
-  } else {
-    io.sockets.emit('dht22_humidity', data);
-  }
-}, refreshTimeInSec);
+//   if (data.type === 'Temperature') {
+//     io.sockets.emit('dht22_temperature', data);
+//   } else {
+//     io.sockets.emit('dht22_humidity', data);
+//   }
+// }, refreshTimeInSec);
 
 BMP180.fetchInterval(function (err, data) {
   if (err) {
@@ -44,6 +44,8 @@ BMP180.fetchInterval(function (err, data) {
   }
 
   if (data.type === 'Pressure') {
+    console.log(data);
+    
     io.sockets.emit('bmp180_pressure', data);
   }
 }, refreshTimeInSec);
@@ -53,6 +55,7 @@ TSL2561.fetchInterval(function (err, data) {
     console.error('An error occured: ', err.cause);
     return;
   }
+  console.log(data);
 
   io.sockets.emit('tsl2561_light', data);
 }, refreshTimeInSec);
