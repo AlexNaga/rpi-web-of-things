@@ -103,7 +103,6 @@ window.onload = () => {
     type: 'line',
     data: temperatureData,
     options: {
-      responsive: false,
       title: {
         display: true,
         text: 'Temperature via DHT22'
@@ -133,7 +132,6 @@ window.onload = () => {
     type: 'line',
     data: humidityData,
     options: {
-      responsive: false,      
       title: {
         display: true,
         text: 'Humidity via DHT22'
