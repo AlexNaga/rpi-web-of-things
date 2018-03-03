@@ -162,14 +162,6 @@ window.onload = () => {
     type: 'line',
     data: pressureData,
     options: {
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 10,
-          bottom: 10
-        }
-      },
       title: {
         display: true,
         text: 'Pressure via BMP180'
@@ -199,14 +191,6 @@ window.onload = () => {
     type: 'line',
     data: lightData,
     options: {
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 20,
-          bottom: 20
-        }
-      },
       title: {
         display: true,
         text: 'Brightness via TSL2561'
@@ -239,6 +223,7 @@ window.onload = () => {
       chart.data.datasets.forEach((dataset) => {
         dataset.data.shift();
       });
+
       chart.update();
     }
 
@@ -248,6 +233,12 @@ window.onload = () => {
       chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
       });
+
+      console.log('Min: ', chart.options.scales.yAxes[0].min);
+      console.log('Max: ', chart.options.scales.yAxes[0].max);
+      
+      // chart.options.scales.yAxes[0].ticks.min = min - 5
+      // chart.options.scales.yAxes[0].ticks.max = max + 5
       chart.update();
     }
 
