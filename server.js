@@ -57,3 +57,9 @@ TSL2561.fetchInterval(function (err, data) {
 }, refreshTimeInSec);
 
 server.listen(port);
+console.log('The server is running on port: ', port);
+import { networkInterfaces } from 'os'
+
+const getLocalExternalIp = () => [].concat.apply([], Object.values(networkInterfaces()))
+  .filter(details => details.family === 'IPv4' && !details.internal)
+  .pop().address
