@@ -63,7 +63,7 @@ let lightData = {
   unit: 'Lux',
   unit_display: 'Lux',
   value: 43,
-  date: 2018 - 03 - 03T21: 24: 01.076Z,
+  date: "2018 - 03 - 03T21: 24: 01.076Z",
   timestamp: 1520112241076,
   sensor_name: 'light_sensor',
   sensor_type: 'TSL2561'
@@ -74,7 +74,7 @@ let pressureData = {
   unit: 'Pascal',
   unit_display: 'Pa',
   value: 101086,
-  date: 2018 - 03 - 03T21: 24: 01.096Z,
+  date: "2018 - 03 - 03T21: 24: 01.096Z",
   timestamp: 1520112241096,
   sensor_name: 'pressure_sensor',
   sensor_type: 'BMP180'
