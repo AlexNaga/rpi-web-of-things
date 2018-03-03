@@ -162,6 +162,14 @@ window.onload = () => {
     type: 'line',
     data: pressureData,
     options: {
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 10,
+          bottom: 10
+        }
+      },
       title: {
         display: true,
         text: 'Pressure via BMP180'
@@ -191,6 +199,14 @@ window.onload = () => {
     type: 'line',
     data: lightData,
     options: {
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 10,
+          bottom: 10
+        }
+      },
       title: {
         display: true,
         text: 'Brightness via TSL2561'
