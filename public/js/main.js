@@ -203,8 +203,8 @@ window.onload = () => {
         padding: {
           left: 0,
           right: 0,
-          top: 10,
-          bottom: 10
+          top: 20,
+          bottom: 20
         }
       },
       title: {
