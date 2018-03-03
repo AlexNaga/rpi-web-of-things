@@ -71,11 +71,7 @@ let lightData = {
 
 
 window.onload = () => {
-  // Code for getting local IP
-  var ip = "<?php echo $_SERVER['SERVER_ADDR']; ?>";
-  alert(ip);
-
-  const socket = io('ws://' + ip + ':3000');
+  const socket = io('ws://192.168.1.1:3000');
 
   socket.on('dht22_temperature', (data) => {
     let sensorModel = data.sensor_type;
