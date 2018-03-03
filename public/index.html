@@ -7,6 +7,7 @@
   <title>SensorView</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -15,8 +16,15 @@
       <h1 class="title">SensorView</h1>
       <p class="subtitle">Real-time overview for a bunch of sensors connected to a Raspberry Pi 3 Model B. </p>
 
-      <canvas id="chart_temperature" width="400" height="200"></canvas>
-      <canvas id="chart_humidity" width="400" height="200"></canvas>
+      <div class="flex-container">
+        <div>
+          <canvas id="chart_temperature" width="400" height="200"></canvas>
+        </div>
+        <div>
+          <canvas id="chart_humidity" width="400" height="200"></canvas>
+        </div>
+      </div>
+
       <canvas id="chart_pressure" width="400" height="200"></canvas>
       <canvas id="chart_light" width="400" height="200"></canvas>
 
