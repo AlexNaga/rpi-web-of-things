@@ -223,7 +223,6 @@ window.onload = () => {
       chart.data.datasets.forEach((dataset) => {
         dataset.data.shift();
       });
-
       chart.update();
     }
 
@@ -233,12 +232,6 @@ window.onload = () => {
       chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
       });
-
-      console.log('Min: ', chart.options.scales.yAxes[0].min);
-      console.log('Max: ', chart.options.scales.yAxes[0].max);
-      
-      // chart.options.scales.yAxes[0].ticks.min = min - 5
-      // chart.options.scales.yAxes[0].ticks.max = max + 5
       chart.update();
     }
 
