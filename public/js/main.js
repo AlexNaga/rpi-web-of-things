@@ -71,7 +71,7 @@ let lightData = {
 
 
 window.onload = () => {
-  const socket = io('ws://192.168.10.223:3000');
+  const socket = io('ws://swampiest-indri-8574.dataplicity.io');
 
   socket.on('dht22_temperature', (data) => {
     let sensorModel = data.sensor_type;
