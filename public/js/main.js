@@ -13,8 +13,8 @@ let temperatureData = {
       data: temperatureInit,
 
       // Styling for the temperature chart
-      backgroundColor: '#EE1313',
-      borderColor: '#EE1313',
+      backgroundColor: '#CC333F',
+      borderColor: '#CC333F',
       fill: false,
       pointRadius: 5
     }
@@ -29,8 +29,8 @@ let humidityData = {
       data: humidityInit,
 
       // Styling for the humidity chart
-      backgroundColor: '#4979C0',
-      borderColor: '#4979C0',
+      backgroundColor: '#00A0B0',
+      borderColor: '#00A0B0',
       fill: false,
       pointRadius: 5
     }
@@ -45,8 +45,8 @@ let pressureData = {
       data: pressureInit,
 
       // Styling for the pressure chart
-      backgroundColor: '#3DA239',
-      borderColor: '#3DA239',
+      backgroundColor: '#EB6841',
+      borderColor: '#EB6841',
       fill: false,
       pointRadius: 5
     }
@@ -61,8 +61,8 @@ let lightData = {
       data: lightInit,
 
       // Styling for the brightness chart
-      backgroundColor: '#FFE942',
-      borderColor: '#FFE942',
+      backgroundColor: '#EDC951',
+      borderColor: '#EDC951',
       fill: false,
       pointRadius: 5
     }
