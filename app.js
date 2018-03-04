@@ -6,7 +6,7 @@ const logger = require('morgan');
 app.use(logger('dev')); // Logs all requests to the terminal
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 // Error handling
 app.use((req, res, next) => {
