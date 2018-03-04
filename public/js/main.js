@@ -29,8 +29,8 @@ let humidityData = {
       data: humidityInit,
 
       // Styling for the humidity chart
-      backgroundColor: '#036B79',
-      borderColor: '#036B79',
+      backgroundColor: '#2A8FBD',
+      borderColor: '#2A8FBD',
       fill: false,
       pointRadius: 5
     }
@@ -45,8 +45,8 @@ let pressureData = {
       data: pressureInit,
 
       // Styling for the pressure chart
-      backgroundColor: '#24A140',
-      borderColor: '#24A140',
+      backgroundColor: '#4D9E3F',
+      borderColor: '#4D9E3F',
       fill: false,
       pointRadius: 5
     }
