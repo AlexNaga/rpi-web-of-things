@@ -73,18 +73,19 @@ let lightData = {
 window.onload = () => {
   console.log(window.location.host);
   console.log(window.location.protocol);
-  const socket;
+  
+  let socket = io('ws://' + window.location.host);  
 
   if (window.location.protocol == "http:") {
     console.log("It's http:");
     
     //localhost
-    const socket = io('ws://' + window.location.host);
+    let socket = io('ws://' + window.location.host);
   }
   else if (window.location.protocol == "https:") {
     console.log("It's https:");    
     //Dataplicity
-    const socket = io('wss://' + window.location.host);
+    let socket = io('wss://' + window.location.host);
   }
 
   socket.on('dht22_temperature', (data) => {
