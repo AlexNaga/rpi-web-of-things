@@ -72,8 +72,9 @@ let lightData = {
 
 window.onload = () => {
   console.log(window.location.host);
+  console.log(window.location.protocol);
 
-  if (window.location.protocol == "http:" || "192.168.10.223:3000") {
+  if (window.location.protocol == "http:") {
     //localhost
     const socket = io('ws://' + window.location.host);
   }
