@@ -6,9 +6,12 @@ Linnaeus University, Sweden.
 
 You can find the assignment [here.](https://coursepress.lnu.se/kurs/the-web-as-an-application-platform/examination-3)
 
+A live demo of this application can be found at [https://rpi.alexnaga.se](https://rpi.alexnaga.se)
+
 ## Usage
 
-This module depends on the [BCM2835](http://www.airspayce.com/mikem/bcm2835/) library that must be installed on your board before you can actually use this module.
+This module depends on the [BCM2835](http://www.airspayce.com/mikem/bcm2835/) library that must be installed on your board before you can actually use this module.  
+You also need to have Node.js installed. [How to install Node.js on Raspberry Pi](https://github.com/cncjs/cncjs/wiki/Setup-Guide:-Raspberry-Pi-%7C-Install-Node.js-Manually)
 
 1. Clone this repository or download the `.zip` file.
 2. Extract folder to preferred location.
@@ -16,3 +19,16 @@ This module depends on the [BCM2835](http://www.airspayce.com/mikem/bcm2835/) li
 4. Install the required dependencies by typing `npm install`
 5. Start the server by typing `npm start`
 6. The server is now running at [http://localhost:3000](http://localhost:3000)
+
+## Report
+
+### *Vad gör din "web of thing?"*
+Jag har kopplat tre sensorer till en Raspberry Pi 3b, som sedan presenteras i realtid via ett webbgränssnitt.
+- Temperaturmätare och luftfuktighet (AM2302).
+- Lufttryck (BMP180).
+- Ljussensor (TSL2561).
+
+### *Hur fungerar applikationen?"*
+Informationen från sensorerna hämtas med en sekunds intervall och skickas vidare via WebSocket till en klient. Därefter presenteras informationen via ett webbgränssnitt till användaren.
+
+Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
