@@ -28,7 +28,12 @@ Jag har kopplat tre sensorer till en Raspberry Pi 3b, som sedan presenteras i re
 - Lufttryck (BMP180).
 - Ljussensor (TSL2561).
 
-### *Hur fungerar applikationen?"*
+### *Hur fungerar applikationen?*
 Informationen från sensorerna hämtas med en sekunds intervall och skickas vidare via WebSocket till en klient. Därefter presenteras informationen via ett webbgränssnitt till användaren.
 
+### *Hur stödjer implementeringen teorierna kring "web of things"?*
+
+### *Vad har gått dåligt/bra i projektet?*
 Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
+
+Det som har gått bra med projeket är ironiskt nog själva kopplingen av sensorerna, det var kul att 
