@@ -38,12 +38,12 @@ exports.listSensors = (req, res, next) => {
   });
 };
 
-// Get value from temperature sensor
+// Get current value from the temperature sensor
 exports.getTemperature = (req, res, next) => {
   let DHT22 = new sensorLib.Sensor({
     type: 'DHT22',
     pin: 0X7
-  }, 'temp_humidity_sensor');
+  }, 'temperature_sensor');
 
   DHT22.fetch(function (err, data) {
     if (err) {
@@ -64,7 +64,26 @@ exports.getTemperature = (req, res, next) => {
           temperatureSensor: { data }
         }
       });
-    } else {
+    }
+  });
+};
+
+// Get current value from the humidity sensor
+exports.getHumidity = (req, res, next) => {
+  let DHT22 = new sensorLib.Sensor({
+    type: 'DHT22',
+    pin: 0X7
+  }, 'humidity_sensor');
+
+  DHT22.fetch(function (err, data) {
+    if (err) {
+      return res.status(500).json({
+        message: 'An error occured!',
+        error: err.cause
+      });
+    }
+
+    if (data.type === 'Humidity') {
       res.status(200).json({
         links: {
           sensors: {
