@@ -13,7 +13,7 @@ router.get('/temperature', SensorsController.getTemperature);
 router.get('/humidity', SensorsController.getHumidity);
 
 // // Get current value from the pressure sensor
-router.get('/pressure', checkAuth, SensorsController.getPressure);
+router.get('/pressure', SensorsController.getPressure);
 
 // // Get current value from the brightness sensor
 router.get('/brightness', SensorsController.getBrightness);
