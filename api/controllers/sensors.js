@@ -104,15 +104,15 @@ exports.getPressure = (req, res, next) => {
     type: 'BMP180',
     address: 0x77
   }, 'pressure_sensor');
-  if (data.type === 'Pressure') {
-    BMP180.fetch(function (err, data) {
-      if (err) {
-        return res.status(500).json({
-          message: 'An error occured!',
-          error: err.cause
-        });
-      }
+  BMP180.fetch(function (err, data) {
+    if (err) {
+      return res.status(500).json({
+        message: 'An error occured!',
+        error: err.cause
+      });
+    }
 
+    if (data.type === 'Pressure') {
       res.status(200).json({
         links: {
           sensors: {
@@ -123,8 +123,8 @@ exports.getPressure = (req, res, next) => {
           pressureSensor: { data }
         }
       });
-    });
-  }
+    }
+  });
 };
 
 // Get current value from the brightness sensor
