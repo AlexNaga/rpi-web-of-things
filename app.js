@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
-const apiRoutes = require('./api/routes/index');
-const sensorRoutes = require('./api/routes/sensors');
+// const apiRoutes = require('./api/routes/index');
+// const sensorRoutes = require('./api/routes/sensors');
 
 app.use(logger('dev')); // Logs all requests to the terminal
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 // Routes
-app.use('/api', apiRoutes);
-app.use('/api/sensors', sensorRoutes);
+// app.use('/api', apiRoutes);
+// app.use('/api/sensors', sensorRoutes);
 
 // Error handling
 app.use((req, res, next) => {
