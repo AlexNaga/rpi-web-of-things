@@ -50,7 +50,7 @@ exports.getTemperature = (req, res, next) => {
       return res.status(500).json({
         message: 'An error occured!',
         error: err.cause
-      }
+      });
     }
 
     if (data.type === 'Temperature') {
