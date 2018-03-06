@@ -10,7 +10,7 @@ A live demo of this application can be found at [https://rpi.alexnaga.se](https:
 
 ## Usage
 
-This module depends on the [BCM2835](http://www.airspayce.com/mikem/bcm2835/) library that must be installed on your board before you can actually use this module.  
+This application depends on the [BCM2835](http://www.airspayce.com/mikem/bcm2835/) library that must be installed on your board before you can actually use this application.  
 You also need to have Node.js installed. [How to install Node.js on Raspberry Pi](https://github.com/cncjs/cncjs/wiki/Setup-Guide:-Raspberry-Pi-%7C-Install-Node.js-Manually)
 
 1. Clone this repository or download the `.zip` file.
