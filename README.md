@@ -33,7 +33,7 @@ Informationen från sensorerna hämtas med en sekunds intervall och skickas vida
 
 ### *Hur stödjer implementeringen teorierna kring "web of things"?*
 Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.  
-Klienter kan lyssna på https://rpi.alexnaga.se på olika kanaler för att få realtidsdata.
+Klienter kan lyssna på wss://rpi.alexnaga.se på olika kanaler för att få realtidsdata.
  
 | WebSocket channel | Description                                    |
 |-------------------|------------------------------------------------|

@@ -77,10 +77,7 @@ window.onload = () => {
   // If localhost
   if (window.location.protocol == "http:") {
     socket = io('ws://' + window.location.host);
-  }
-
-  console.log(window.location.host);
-  
+  }  
 
   socket.on('temperature', (data) => {
     let sensorModel = data.sensor_type;
