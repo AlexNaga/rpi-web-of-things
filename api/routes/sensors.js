@@ -3,7 +3,7 @@ const router = express.Router();
 
 const SensorsController = require('../controllers/sensors');
 
-// Lists all sensors
+// Lists all available sensors
 router.get('/', SensorsController.listSensors);
 
 // // Get current value from the temperature sensor

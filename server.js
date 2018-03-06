@@ -30,9 +30,9 @@ DHT22.fetchInterval(function (err, data) {
   }
 
   if (data.type === 'Temperature') {
-    io.sockets.emit('dht22_temperature', data);
+    io.sockets.emit('temperature', data);
   } else {
-    io.sockets.emit('dht22_humidity', data);
+    io.sockets.emit('humidity', data);
   }
 }, refreshTimeInSec);
 
@@ -42,7 +42,7 @@ BMP180.fetchInterval(function (err, data) {
   }
 
   if (data.type === 'Pressure') {
-    io.sockets.emit('bmp180_pressure', data);
+    io.sockets.emit('pressure', data);
   }
 }, refreshTimeInSec);
 
@@ -51,7 +51,7 @@ TSL2561.fetchInterval(function (err, data) {
     return console.error('An error occured: ', err.cause);
   }
 
-  io.sockets.emit('tsl2561_light', data);
+  io.sockets.emit('brightness', data);
 }, refreshTimeInSec);
 
 

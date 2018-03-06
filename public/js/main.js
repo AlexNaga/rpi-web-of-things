@@ -79,24 +79,24 @@ window.onload = () => {
     socket = io('ws://' + window.location.host);
   }
 
-  socket.on('dht22_temperature', (data) => {
+  socket.on('temperature', (data) => {
     let sensorModel = data.sensor_type;
     let sensorType = data.type;
     let sensorValue = data.value.toFixed(1);
     updateChart(temperatureChart, sensorValue);
   });
 
-  socket.on('dht22_humidity', (data) => {
+  socket.on('humidity', (data) => {
     let sensorValue = data.value.toFixed(1);
     updateChart(humidityChart, sensorValue);
   });
 
-  socket.on('bmp180_pressure', (data) => {
+  socket.on('pressure', (data) => {
     let sensorValue = data.value;
     updateChart(pressureChart, sensorValue);
   });
 
-  socket.on('tsl2561_light', (data) => {
+  socket.on('brightness', (data) => {
     let sensorValue = data.value;
     updateChart(lightChart, sensorValue);
   });

@@ -1,6 +1,6 @@
 const sensorLib = require('raspi-sensors');
 
-// Lists all sensors
+// Lists all available sensors
 exports.listSensors = (req, res, next) => {
   res.status(200).json({
     links: {
