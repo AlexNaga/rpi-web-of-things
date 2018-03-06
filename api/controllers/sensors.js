@@ -54,20 +54,27 @@ exports.getTemperature = (req, res, next) => {
     }
 
     if (data.type === 'Temperature') {
-      console.log(data);
       res.status(200).json({
         links: {
           sensors: {
             href: process.env.DOMAIN + 'api/sensors',
             method: 'GET',
-            desc: 'Route for listing all sensors.'
+            desc: 'Route for listing all available sensors.'
           },
-          temperature: {
-            temperature: data
-          }
+          temperatureSensor: { data }
         }
       });
     } else {
+      res.status(200).json({
+        links: {
+          sensors: {
+            href: process.env.DOMAIN + 'api/sensors',
+            method: 'GET',
+            desc: 'Route for listing all available sensors.'
+          },
+          humiditySensor: { data }
+        }
+      });
     }
   });
 };
