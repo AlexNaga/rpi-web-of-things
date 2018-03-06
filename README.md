@@ -32,7 +32,7 @@ Jag har kopplat tre sensorer till en Raspberry Pi 3b, som sedan presenteras i re
 Informationen från sensorerna hämtas med en sekunds intervall och skickas vidare via WebSocket till en klient. Därefter presenteras informationen via ett webbgränssnitt till användaren.
 
 ### *Hur stödjer implementeringen teorierna kring "web of things"?*
-Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.
+Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.  
 Klienter kan lyssna på https://rpi.alexnaga.se på olika kanaler för att få realtidsdata.
  
 | WebSocket channel | Description                                    |
@@ -43,41 +43,36 @@ Klienter kan lyssna på https://rpi.alexnaga.se på olika kanaler för att få r
 | brightness        | Get current value from the brightness sensor.  |
 
 
+
 Jag har även skapat ett RESTful API, där användaren kan hämta värden från sensorerna med en GET-request.
 Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
 
-#### /api
-___
+### /api
 | Method | Route | Description                         |
 |--------|-------|-------------------------------------|
 | GET    | /api  | Main entry point. Lists all routes. |
 
-#### /api/sensors
-___
+### /api/sensors
 | Method | Route        | Description                  |
 |--------|--------------|------------------------------|
 | GET    | /api/sensors | Lists all available sensors. |
 
-#### /api/sensors/temperature
-___
+### /api/sensors/temperature
 | Method | Route                    | Description                                    |
 |--------|--------------------------|------------------------------------------------|
 | GET    | /api/sensors/temperature | Get current value from the temperature sensor. |
 
-#### /api/sensors/humidity
-___
+### /api/sensors/humidity
 | Method | Route                 | Description                                 |
 |--------|-----------------------|---------------------------------------------|
 | GET    | /api/sensors/humidity | Get current value from the humidity sensor. |
 
-#### /api/sensors/pressure
-___
+### /api/sensors/pressure
 | Method | Route                 | Description                                 |
 |--------|-----------------------|---------------------------------------------|
 | GET    | /api/sensors/pressure | Get current value from the pressure sensor. |
 
-#### /api/sensors/brightness
-___
+### /api/sensors/brightness
 | Method | Route                   | Description                                   |
 |--------|-------------------------|-----------------------------------------------|
 | GET    | /api/sensors/brightness | Get current value from the brightness sensor. |
