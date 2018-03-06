@@ -32,8 +32,11 @@ Jag har kopplat tre sensorer till en Raspberry Pi 3b, som sedan presenteras i re
 Informationen från sensorerna hämtas med en sekunds intervall och skickas vidare via WebSocket till en klient. Därefter presenteras informationen via ett webbgränssnitt till användaren.
 
 ### *Hur stödjer implementeringen teorierna kring "web of things"?*
+
+"En motivering kring hur din/er implementering stödjer sig på teorierna kring web of things. Använd de termer som tas upp i litteraturen så som integration pattern och de olika lagren i arkitekturmodellen."
+
 Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.  
-Klienter kan lyssna på wss://rpi.alexnaga.se på olika kanaler för att få realtidsdata.
+Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olika kanaler för att få realtidsdata.
  
 | WebSocket channel | Description                                    |
 |-------------------|------------------------------------------------|
@@ -47,16 +50,16 @@ Jag har även skapat ett RESTful API, där användaren kan hämta värden från 
 Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
 
 ### /api
-| Method | Route                    | Description                                    |
-|--------|--------------------------|------------------------------------------------|
-| GET    | /api                     | Main entry point. Lists all routes.            |
-| GET    | /api/sensors             | Lists all available sensors.                   |
-| GET    | /api/sensors/temperature | Get current value from the temperature sensor. |
-| GET    | /api/sensors/humidity    | Get current value from the humidity sensor.    |
-| GET    | /api/sensors/pressure    | Get current value from the pressure sensor.    |
-| GET    | /api/sensors/brightness  | Get current value from the brightness sensor.  |
+| Method | Route                    | Description                                     |
+|--------|--------------------------|-------------------------------------------------|
+| GET    | /api                     | Main entry point. Lists all routes.             |
+| GET    | /api/sensors             | Lists all available sensors.                    |
+| GET    | /api/sensors/temperature | Gets current value from the temperature sensor. |
+| GET    | /api/sensors/humidity    | Gets current value from the humidity sensor.    |
+| GET    | /api/sensors/pressure    | Gets current value from the pressure sensor.    |
+| GET    | /api/sensors/brightness  | Gets current value from the brightness sensor.  |
 
-### *Vad har gått dåligt/bra i projektet?*
+### *Vad har gått dåligt / bra med projektet?*
 Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
 
-Det som har gått bra med projeket är ironiskt nog själva kopplingen av sensorerna, det var kul att 
+Det som jag har fått ut mest av detta projekt är egentligen att jag har ökat min förståelse kring hur servern, klienten osv. hänger ihop med varandra.
