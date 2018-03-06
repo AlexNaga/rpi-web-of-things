@@ -7,7 +7,7 @@ const SensorsController = require('../controllers/sensors');
 router.get('/', SensorsController.listSensors);
 
 // // Get value from temperature sensor
-// router.get('/temperature', SensorsController.getTemperature);
+router.get('/temperature', SensorsController.getTemperature);
 
 // // Get value from humidity sensor
 // router.get('/humidity', SensorsController.getHumidity);
