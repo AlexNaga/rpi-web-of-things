@@ -105,7 +105,7 @@ exports.getPressure = (req, res, next) => {
     address: 0x77
   }, 'pressure_sensor');
 
-  DHT22.fetch(function (err, data) {
+  BMP180.fetch(function (err, data) {
     if (err) {
       return res.status(500).json({
         message: 'An error occured!',
@@ -133,7 +133,7 @@ exports.getBrightness = (req, res, next) => {
     address: 0X39
   }, 'brightness_sensor');
 
-  DHT22.fetch(function (err, data) {
+  TSL2561.fetch(function (err, data) {
     if (err) {
       return res.status(500).json({
         message: 'An error occured!',
