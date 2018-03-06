@@ -36,7 +36,7 @@ exports.listSensors = (req, res, next) => {
       }
     }
   });
-// };
+};
 
 // // Get value from temperature sensor
 // exports.getTemperature = (req, res, next) => {
