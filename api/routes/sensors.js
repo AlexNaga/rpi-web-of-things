@@ -13,9 +13,9 @@ router.get('/temperature', SensorsController.getTemperature);
 router.get('/humidity', SensorsController.getHumidity);
 
 // // Get current value from the pressure sensor
-// router.get('/pressure', checkAuth, SensorsController.getPressure);
+router.get('/pressure', checkAuth, SensorsController.getPressure);
 
 // // Get current value from the brightness sensor
-// router.get('/brightness', SensorsController.getBrightness);
+router.get('/brightness', SensorsController.getBrightness);
 
 module.exports = router;

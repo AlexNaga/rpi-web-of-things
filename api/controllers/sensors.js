@@ -98,12 +98,58 @@ exports.getHumidity = (req, res, next) => {
   });
 };
 
-// let BMP180 = new sensorLib.Sensor({
-//   type: 'BMP180',
-//   address: 0x77
-// }, 'pressure_sensor');
+// Get current value from the pressure sensor
+exports.getPressure = (req, res, next) => {
+  let BMP180 = new sensorLib.Sensor({
+    type: 'BMP180',
+    address: 0x77
+  }, 'pressure_sensor');
 
-// let TSL2561 = new sensorLib.Sensor({
-//   type: 'TSL2561',
-//   address: 0X39
-// }, 'light_sensor');
+  DHT22.fetch(function (err, data) {
+    if (err) {
+      return res.status(500).json({
+        message: 'An error occured!',
+        error: err.cause
+      });
+    }
+
+    res.status(200).json({
+      links: {
+        sensors: {
+          href: process.env.DOMAIN + 'api/sensors',
+          method: 'GET',
+          desc: 'Route for listing all available sensors.'
+        },
+        pressureSensor: { data }
+      }
+    });
+  });
+};
+
+// Get current value from the brightness sensor
+exports.getBrightness = (req, res, next) => {
+  let TSL2561 = new sensorLib.Sensor({
+    type: 'TSL2561',
+    address: 0X39
+  }, 'brightness_sensor');
+
+  DHT22.fetch(function (err, data) {
+    if (err) {
+      return res.status(500).json({
+        message: 'An error occured!',
+        error: err.cause
+      });
+    }
+
+    res.status(200).json({
+      links: {
+        sensors: {
+          href: process.env.DOMAIN + 'api/sensors',
+          method: 'GET',
+          desc: 'Route for listing all available sensors.'
+        },
+        brightnessSensor: { data }
+      }
+    });
+  });
+};
