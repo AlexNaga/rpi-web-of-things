@@ -41,41 +41,20 @@ Klienter kan lyssna på https://rpi.alexnaga.se på olika kanaler för att få r
 | humidity          | Get current value from the humidity sensor.    |
 | pressure          | Get current value from the pressure sensor.    |
 | brightness        | Get current value from the brightness sensor.  |
-
-
+  
 
 Jag har även skapat ett RESTful API, där användaren kan hämta värden från sensorerna med en GET-request.
 Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
 
 ### /api
-| Method | Route | Description                         |
-|--------|-------|-------------------------------------|
-| GET    | /api  | Main entry point. Lists all routes. |
-
-### /api/sensors
-| Method | Route        | Description                  |
-|--------|--------------|------------------------------|
-| GET    | /api/sensors | Lists all available sensors. |
-
-### /api/sensors/temperature
 | Method | Route                    | Description                                    |
 |--------|--------------------------|------------------------------------------------|
+| GET    | /api                     | Main entry point. Lists all routes.            |
+| GET    | /api/sensors             | Lists all available sensors.                   |
 | GET    | /api/sensors/temperature | Get current value from the temperature sensor. |
-
-### /api/sensors/humidity
-| Method | Route                 | Description                                 |
-|--------|-----------------------|---------------------------------------------|
-| GET    | /api/sensors/humidity | Get current value from the humidity sensor. |
-
-### /api/sensors/pressure
-| Method | Route                 | Description                                 |
-|--------|-----------------------|---------------------------------------------|
-| GET    | /api/sensors/pressure | Get current value from the pressure sensor. |
-
-### /api/sensors/brightness
-| Method | Route                   | Description                                   |
-|--------|-------------------------|-----------------------------------------------|
-| GET    | /api/sensors/brightness | Get current value from the brightness sensor. |
+| GET    | /api/sensors/humidity    | Get current value from the humidity sensor.    |
+| GET    | /api/sensors/pressure    | Get current value from the pressure sensor.    |
+| GET    | /api/sensors/brightness  | Get current value from the brightness sensor.  |
 
 ### *Vad har gått dåligt/bra i projektet?*
 Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
