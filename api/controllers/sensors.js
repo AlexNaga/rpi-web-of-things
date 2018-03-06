@@ -51,24 +51,25 @@ exports.getTemperature = (req, res, next) => {
         message: 'An error occured!',
         error: err.cause
       }
+    }
 
     if (data.type === 'Temperature') {
-        console.log(data);
-        res.status(200).json({
-          links: {
-            sensors: {
-              href: process.env.DOMAIN + 'api/sensors',
-              method: 'GET',
-              desc: 'Route for listing all sensors.'
-            },
-            temperature: {
-              temperature: data
-            }
+      console.log(data);
+      res.status(200).json({
+        links: {
+          sensors: {
+            href: process.env.DOMAIN + 'api/sensors',
+            method: 'GET',
+            desc: 'Route for listing all sensors.'
+          },
+          temperature: {
+            temperature: data
           }
-        });
-      } else {
-      }
-    });
+        }
+      });
+    } else {
+    }
+  });
 };
 
 let BMP180 = new sensorLib.Sensor({
