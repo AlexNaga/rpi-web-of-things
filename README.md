@@ -33,8 +33,9 @@ Informationen från sensorerna hämtas med en sekunds intervall och skickas vida
 
 ### *Hur stödjer implementeringen teorierna kring "web of things"?*
 
-"En motivering kring hur din/er implementering stödjer sig på teorierna kring web of things. Använd de termer som tas upp i litteraturen så som integration pattern och de olika lagren i arkitekturmodellen."
+Om man pratar i de termer som tas upp i kurslitteraturen så använder jag mig av en så kallad *Gateway intergration-pattern*. Raspberry Pi'n fungerar då som en brygga mellan Internet och de tre sensorerna.
 
+#### Access Layer (WoT architecture stack)
 Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.  
 Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olika kanaler för att få realtidsdata.
  
@@ -47,7 +48,6 @@ Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olik
   
 
 Jag har även skapat ett RESTful API, där användaren kan hämta värden från sensorerna med en GET-request.
-Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
 
 ### /api
 | Method | Route                    | Description                                     |
@@ -58,6 +58,42 @@ Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar 
 | GET    | /api/sensors/humidity    | Gets current value from the humidity sensor.    |
 | GET    | /api/sensors/pressure    | Gets current value from the pressure sensor.    |
 | GET    | /api/sensors/brightness  | Gets current value from the brightness sensor.  |
+
+#### Find Layer (WoT architecture stack)
+För att lättare kunna navigera sig i APIt så har jag implementerat HATEOAS. Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
+
+```
+  "index": {
+    "href": "https://rpi.alexnaga.se/api",
+    "method": "GET",
+    "desc": "Main entry point. Overview of routes."
+  },
+  "self": {
+    "href": "https://rpi.alexnaga.se/api/sensors",
+    "method": "GET",
+    "desc": "Route for listing all sensors."
+  },
+  "temperature": {
+    "href": "https://rpi.alexnaga.se/api/sensors/temperature",
+    "method": "GET",
+    "desc": "Route for getting current value from the temperature sensor."
+  },
+  "humidity": {
+    "href": "https://rpi.alexnaga.se/api/sensors/humidity",
+    "method": "GET",
+    "desc": "Route for getting current value from the humidity sensor."
+  },
+  "pressure": {
+    "href": "https://rpi.alexnaga.se/api/sensors/pressure",
+    "method": "GET",
+    "desc": "Route for getting current value from the pressure sensor."
+  },
+  "brightness": {
+    "href": "https://rpi.alexnaga.se/api/sensors/brightness",
+    "method": "GET",
+    "desc": "Route for getting current value from the brightness sensor."
+  }
+```
 
 ### *Vad har gått dåligt / bra med projektet?*
 Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
