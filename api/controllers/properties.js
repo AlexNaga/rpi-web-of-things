@@ -1,36 +1,36 @@
 const sensorLib = require('raspi-sensors');
 
 // Lists all available sensors
-exports.listSensors = (req, res, next) => {
+exports.getProperties = (req, res, next) => {
   res.status(200).json({
     links: {
       index: {
-        href: process.env.DOMAIN + 'api',
+        href: process.env.DOMAIN + 'model',
         method: 'GET',
-        desc: 'Main entry point. Overview of routes.'
+        desc: 'Route for listing metadata about this WoT.'
       },
       self: {
-        href: process.env.DOMAIN + 'api/sensors',
+        href: process.env.DOMAIN + 'properties',
         method: 'GET',
-        desc: 'Route for listing all sensors.'
+        desc: 'Route for listing all properties.'
       },
       temperature: {
-        href: process.env.DOMAIN + 'api/sensors/temperature',
+        href: process.env.DOMAIN + 'properties/temperature',
         method: 'GET',
         desc: 'Route for getting current value from the temperature sensor.'
       },
       humidity: {
-        href: process.env.DOMAIN + 'api/sensors/humidity',
+        href: process.env.DOMAIN + 'properties/humidity',
         method: 'GET',
         desc: 'Route for getting current value from the humidity sensor.'
       },
       pressure: {
-        href: process.env.DOMAIN + 'api/sensors/pressure',
+        href: process.env.DOMAIN + 'properties/pressure',
         method: 'GET',
         desc: 'Route for getting current value from the pressure sensor.'
       },
       brightness: {
-        href: process.env.DOMAIN + 'api/sensors/brightness',
+        href: process.env.DOMAIN + 'properties/brightness',
         method: 'GET',
         desc: 'Route for getting current value from the brightness sensor.'
       }
@@ -57,12 +57,12 @@ exports.getTemperature = (req, res, next) => {
       res.status(200).json({
         links: {
           sensors: {
-            href: process.env.DOMAIN + 'api/sensors',
+            href: process.env.DOMAIN + 'properties',
             method: 'GET',
             desc: 'Route for listing all available sensors.'
-          },
-          temperatureSensor: { data }
-        }
+          }
+        },
+        temperatureSensor: { data }
       });
     }
   });
@@ -87,12 +87,12 @@ exports.getHumidity = (req, res, next) => {
       res.status(200).json({
         links: {
           sensors: {
-            href: process.env.DOMAIN + 'api/sensors',
+            href: process.env.DOMAIN + 'properties',
             method: 'GET',
             desc: 'Route for listing all available sensors.'
-          },
-          humiditySensor: { data }
-        }
+          }
+        },
+        humiditySensor: { data }
       });
     }
   });
@@ -116,12 +116,12 @@ exports.getPressure = (req, res, next) => {
       res.status(200).json({
         links: {
           sensors: {
-            href: process.env.DOMAIN + 'api/sensors',
+            href: process.env.DOMAIN + 'properties',
             method: 'GET',
             desc: 'Route for listing all available sensors.'
-          },
-          pressureSensor: { data }
-        }
+          }
+        },
+        pressureSensor: { data }
       });
     }
   });
@@ -145,12 +145,12 @@ exports.getBrightness = (req, res, next) => {
     res.status(200).json({
       links: {
         sensors: {
-          href: process.env.DOMAIN + 'api/sensors',
+          href: process.env.DOMAIN + 'properties',
           method: 'GET',
           desc: 'Route for listing all available sensors.'
-        },
-        brightnessSensor: { data }
-      }
+        }
+      },
+      brightnessSensor: { data }
     });
   });
 };

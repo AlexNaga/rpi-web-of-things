@@ -45,49 +45,48 @@ Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olik
 | pressure          | Get current value from the pressure sensor.    |
 | brightness        | Get current value from the brightness sensor.  |
 <br>
-Jag har även skapat ett RESTful API, där användaren kan hämta värden från sensorerna med en GET-request.
+Jag har försökt följa "standarden" som boken nämner angående hur man ska beskriva en *web of thing*. Där användaren kan hämta värden från sensorerna med en GET-request.
 
-### /api
-| Method | Route                    | Description                                     |
-|--------|--------------------------|-------------------------------------------------|
-| GET    | /api                     | Main entry point. Lists all routes.             |
-| GET    | /api/sensors             | Lists all available sensors.                    |
-| GET    | /api/sensors/temperature | Gets current value from the temperature sensor. |
-| GET    | /api/sensors/humidity    | Gets current value from the humidity sensor.    |
-| GET    | /api/sensors/pressure    | Gets current value from the pressure sensor.    |
-| GET    | /api/sensors/brightness  | Gets current value from the brightness sensor.  |
+| Method | Route                   | Description                                    |
+|--------|-------------------------|------------------------------------------------|
+| GET    | /model                  | List metadata about this WoT.                  |
+| GET    | /properties             | List all available properties.                 |
+| GET    | /properties/temperature | Get current value from the temperature sensor. |
+| GET    | /properties/humidity    | Get current value from the humidity sensor.    |
+| GET    | /properties/pressure    | Get current value from the pressure sensor.    |
+| GET    | /properties/brightness  | Get current value from the brightness sensor.  |
 
 #### Find Layer (WoT architecture stack)
-För att lättare kunna navigera sig i APIt och dela med mig av resurser så har jag implementerat HATEOAS. Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
+För att lättare kunna navigera sig i APIt och dela med mig av resurser så har jag implementerat en variant av HATEOAS.
 
 ```
   "index": {
-    "href": "https://rpi.alexnaga.se/api",
+    "href": "https://rpi.alexnaga.se/model",
     "method": "GET",
-    "desc": "Main entry point. Overview of routes."
+    "desc": "Route for listing metadata about this WoT."
   },
   "self": {
-    "href": "https://rpi.alexnaga.se/api/sensors",
+    "href": "https://rpi.alexnaga.se/properties",
     "method": "GET",
-    "desc": "Route for listing all sensors."
+    "desc": "Route for listing all properties."
   },
   "temperature": {
-    "href": "https://rpi.alexnaga.se/api/sensors/temperature",
+    "href": "https://rpi.alexnaga.se/properties/temperature",
     "method": "GET",
     "desc": "Route for getting current value from the temperature sensor."
   },
   "humidity": {
-    "href": "https://rpi.alexnaga.se/api/sensors/humidity",
+    "href": "https://rpi.alexnaga.se/properties/humidity",
     "method": "GET",
     "desc": "Route for getting current value from the humidity sensor."
   },
   "pressure": {
-    "href": "https://rpi.alexnaga.se/api/sensors/pressure",
+    "href": "https://rpi.alexnaga.se/properties/pressure",
     "method": "GET",
     "desc": "Route for getting current value from the pressure sensor."
   },
   "brightness": {
-    "href": "https://rpi.alexnaga.se/api/sensors/brightness",
+    "href": "https://rpi.alexnaga.se/properties/brightness",
     "method": "GET",
     "desc": "Route for getting current value from the brightness sensor."
   }
