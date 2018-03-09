@@ -45,7 +45,7 @@ Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olik
 | pressure          | Get current value from the pressure sensor.    |
 | brightness        | Get current value from the brightness sensor.  |
 <br>
-Jag har försökt följa "standarden" som boken nämner angående hur man ska beskriva en *web of thing*. Där användaren kan hämta värden från sensorerna med en GET-request.
+Jag har försökt utgå från "standarden" som boken nämner angående hur man ska beskriva en *web of thing*. Där användaren kan hämta värden från sensorerna med en GET-request.
 
 | Method | Route                   | Description                                    |
 |--------|-------------------------|------------------------------------------------|
