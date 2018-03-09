@@ -33,7 +33,7 @@ Informationen från sensorerna hämtas med en sekunds intervall och skickas vida
 
 ### *Hur stödjer implementeringen teorierna kring "web of things"?*
 
-Om man pratar i de termer som tas upp i kurslitteraturen så använder jag mig av en så kallad *Gateway intergration-pattern*. Raspberry Pi'n fungerar då som en brygga mellan Internet och de tre sensorerna.
+Om man pratar i de termer som tas upp i kurslitteraturen så använder jag mig av en så kallad *Gateway integration-pattern*. Raspberry Pi'n fungerar då som en brygga mellan Internet och de tre sensorerna.
 
 #### Access Layer (WoT architecture stack)
 Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.  
@@ -59,7 +59,7 @@ Jag har även skapat ett RESTful API, där användaren kan hämta värden från 
 | GET    | /api/sensors/brightness  | Gets current value from the brightness sensor.  |
 
 #### Find Layer (WoT architecture stack)
-För att lättare kunna navigera sig i APIt så har jag implementerat HATEOAS. Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
+För att lättare kunna navigera sig i APIt och dela med mig av resurser så har jag implementerat HATEOAS. Oavsett vart användaren befinner sig i APIt så ska det finnas en rutt som tar användaren vidare någonstans.
 
 ```
   "index": {
