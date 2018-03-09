@@ -32,7 +32,6 @@ Jag har kopplat tre sensorer till en Raspberry Pi 3b, som sedan presenteras i re
 Informationen från sensorerna hämtas med en sekunds intervall och skickas vidare via WebSocket till en klient. Därefter presenteras informationen via ett webbgränssnitt till användaren.
 
 ### *Hur stödjer implementeringen teorierna kring "web of things"?*
-
 Om man pratar i de termer som tas upp i kurslitteraturen så använder jag mig av en så kallad *Gateway integration-pattern*. Raspberry Pi'n fungerar då som en brygga mellan Internet och de tre sensorerna.
 
 #### Access Layer (WoT architecture stack)
@@ -97,4 +96,4 @@ För att lättare kunna navigera sig i APIt och dela med mig av resurser så har
 ### *Vad har gått dåligt / bra med projektet?*
 Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
 
-Det som jag har fått ut mest av detta projekt är egentligen att jag har ökat min förståelse kring hur servern, klienten osv. hänger ihop med varandra.
+Det som jag har fått ut mest av detta projekt är egentligen att jag har ökat min förståelse kring hur servern, klienten osv. hänger ihop med varandra. Att koppla ihop hårdvara med med mjukvara känns inte längre så skrämmande.
