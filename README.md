@@ -45,8 +45,7 @@ Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olik
 | humidity          | Get current value from the humidity sensor.    |
 | pressure          | Get current value from the pressure sensor.    |
 | brightness        | Get current value from the brightness sensor.  |
-  
-
+<br>
 Jag har även skapat ett RESTful API, där användaren kan hämta värden från sensorerna med en GET-request.
 
 ### /api
