@@ -37,7 +37,7 @@ Om man pratar i de termer som tas upp i kurslitteraturen så använder jag mig a
 #### Access Layer (WoT architecture stack)
 Servern använder sig av WebSockets för att skicka ut information från sensorerna varje sekund.  
 Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olika kanaler för att få realtidsdata.
- 
+  
 | WebSocket channel | Description                                    |
 |-------------------|------------------------------------------------|
 | temperature       | Get current value from the temperature sensor. |
@@ -47,7 +47,8 @@ Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olik
 
 <br>
 Jag har försökt utgå från förslagen som boken nämner angående hur man ska beskriva en *web of thing*.  
-Användaren kan hämta värden från sensorerna med en GET-request.
+Användaren kan hämta värden från sensorerna med en GET-request.  
+<br>
 
 | Method | Route                   | Description                                    |
 |--------|-------------------------|------------------------------------------------|
