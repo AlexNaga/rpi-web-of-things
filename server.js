@@ -26,7 +26,7 @@ let TSL2561 = new sensorLib.Sensor({
 
 DHT22.fetchInterval(function (err, data) {
   if (err) {
-    return console.error('An error occured: ', err.cause);
+    return console.error('An error occured: ', err);
   }
 
   if (data.type === 'Temperature') {
@@ -38,7 +38,7 @@ DHT22.fetchInterval(function (err, data) {
 
 BMP180.fetchInterval(function (err, data) {
   if (err) {
-    return console.error('An error occured: ', err.cause);
+    return console.error('An error occured: ', err);
   }
 
   if (data.type === 'Pressure') {
@@ -48,7 +48,7 @@ BMP180.fetchInterval(function (err, data) {
 
 TSL2561.fetchInterval(function (err, data) {
   if (err) {
-    return console.error('An error occured: ', err.cause);
+    return console.error('An error occured: ', err);
   }
 
   io.sockets.emit('brightness', data);
