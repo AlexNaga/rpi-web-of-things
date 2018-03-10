@@ -1,6 +1,6 @@
 exports.model_index = (req, res, next) => {
   res.status(200).json({
-    "id": process.env.DOMAIN + 'api',
+    "id": process.env.DOMAIN,
     "name": "A WoT Raspberry Pi",
     "description": "A Raspberry Pi with a bunch of sensors connected to it.",
     "tags": [
