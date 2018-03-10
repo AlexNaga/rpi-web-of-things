@@ -49,7 +49,6 @@ Klienter kan lyssna efter event på `wss://rpi.alexnaga.se`. Där det finns olik
 
 Jag har försökt utgå från förslagen som boken nämner angående hur man ska beskriva en *web of thing*.  
 Användaren kan hämta värden från sensorerna med en GET-request.  
-&nbsp;
 
 | Method | Route                   | Description                                    |
 |--------|-------------------------|------------------------------------------------|
