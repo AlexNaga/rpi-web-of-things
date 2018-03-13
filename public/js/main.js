@@ -71,12 +71,12 @@ let lightData = {
 
 
 window.onload = () => {
-  // If https
-  let socket = io('wss://' + window.location.host);
-
   // If localhost
-  if (window.location.protocol == "http:") {
-    socket = io('ws://' + window.location.host);
+  let socket = io('ws://' + window.location.host);
+
+  // If https
+  if (window.location.protocol == "https:") {
+    socket = io('wss://' + window.location.host);
   }  
 
   socket.on('temperature', (data) => {
