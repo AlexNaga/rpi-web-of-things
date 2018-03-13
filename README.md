@@ -95,7 +95,7 @@ För att lättare kunna navigera sig i APIt och dela med mig av resurser så har
   }
 ```
 
-### *Vad har gått dåligt / bra med projektet?*
+### *Personlig reflektion*
 Det som jag har lagt mest tid på i detta projekt är egentlig debuggning. Det inkluderar prylar som var gamla och inte fungerade till 100%. Satt och debuggade en hel dag eftersom en sensor inte hittades, det visade sig att det var själva kopplingsdäcket som var slitet och trasigt.
 
 Det som jag har fått ut mest av detta projekt är egentligen att jag har ökat min förståelse kring hur servern, klienten osv. hänger ihop med varandra. Att koppla ihop hårdvara med med mjukvara känns inte längre så skrämmande.
