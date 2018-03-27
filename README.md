@@ -22,9 +22,6 @@ This Web of Thing is a real-time overview for a bunch of sensors connected to a 
 | pressure          | Get current value from the pressure sensor.    |
 | brightness        | Get current value from the brightness sensor.  |
 
-&nbsp;
-
-
 #### API
 | Method | Route                   | Description                                    |
 |--------|-------------------------|------------------------------------------------|
