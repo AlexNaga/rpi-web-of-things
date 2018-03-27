@@ -1,4 +1,4 @@
-# 1DV527: Project
+# SensorView
 ## About
 
 This repository was created for the course 1DV527: The web as an application platform.
