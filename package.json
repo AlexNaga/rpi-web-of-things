@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1dv527/grupp04-vt18.git"
+    "url": "git+https://github.com/AlexNaga/rpi-web-of-things.git"
   },
   "author": "Alex Naga",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1dv527/grupp04-vt18/issues"
+    "url": "https://github.com/AlexNaga/rpi-web-of-things/issues"
   },
-  "homepage": "https://github.com/1dv527/grupp04-vt18#readme",
+  "homepage": "https://github.com/AlexNaga/rpi-web-of-things#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "chart.js": "^2.7.2",
