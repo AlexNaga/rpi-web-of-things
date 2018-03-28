@@ -6,13 +6,13 @@ Linnaeus University, Sweden.
 
 You can find the assignment [here.](https://coursepress.lnu.se/kurs/the-web-as-an-application-platform/examination-3)
 
-&nbsp;
-
 This Web of Thing is a real-time overview for a bunch of sensors connected to a Raspberry Pi 3 Model B.
 
 - Temperature och humidity (AM2302).
 - Air pressure (BMP180).
 - Light sensor (TSL2561).
+
+![SensorView](https://github.com/AlexNaga/rpi-web-of-things/raw/master/img/sensorview_overview.png)
 
 #### WebSockets  
 | WebSocket channel | Description                                    |
