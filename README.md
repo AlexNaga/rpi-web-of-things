@@ -14,24 +14,6 @@ This Web of Thing is a real-time overview for a bunch of sensors connected to a 
 
 ![SensorView](https://github.com/AlexNaga/rpi-web-of-things/raw/master/img/sensorview_overview.png)
 
-#### WebSockets  
-| WebSocket channel | Description                                    |
-|-------------------|------------------------------------------------|
-| temperature       | Get current value from the temperature sensor. |
-| humidity          | Get current value from the humidity sensor.    |
-| pressure          | Get current value from the pressure sensor.    |
-| brightness        | Get current value from the brightness sensor.  |
-
-#### API
-| Method | Route                   | Description                                    |
-|--------|-------------------------|------------------------------------------------|
-| GET    | /model                  | List metadata about this WoT.                  |
-| GET    | /properties             | List all available properties.                 |
-| GET    | /properties/temperature | Get current value from the temperature sensor. |
-| GET    | /properties/humidity    | Get current value from the humidity sensor.    |
-| GET    | /properties/pressure    | Get current value from the pressure sensor.    |
-| GET    | /properties/brightness  | Get current value from the brightness sensor.  |
-
 ## Usage
 
 This application depends on the [BCM2835](http://www.airspayce.com/mikem/bcm2835/) library that must be installed on your board before you can actually use this application.  
@@ -43,3 +25,21 @@ You also need to have Node.js installed. [How to install Node.js on Raspberry Pi
 4. Install the required dependencies by typing `npm install`
 5. Start the server by typing `npm start`
 6. The server is now running at [http://localhost:3000](http://localhost:3000)
+
+#### API
+| Method | Route                   | Description                                    |
+|--------|-------------------------|------------------------------------------------|
+| GET    | /model                  | List metadata about this WoT.                  |
+| GET    | /properties             | List all available properties.                 |
+| GET    | /properties/temperature | Get current value from the temperature sensor. |
+| GET    | /properties/humidity    | Get current value from the humidity sensor.    |
+| GET    | /properties/pressure    | Get current value from the pressure sensor.    |
+| GET    | /properties/brightness  | Get current value from the brightness sensor.  |
+
+#### WebSockets  
+| WebSocket channel | Description                                    |
+|-------------------|------------------------------------------------|
+| temperature       | Get current value from the temperature sensor. |
+| humidity          | Get current value from the humidity sensor.    |
+| pressure          | Get current value from the pressure sensor.    |
+| brightness        | Get current value from the brightness sensor.  |
