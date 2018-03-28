@@ -8,7 +8,7 @@ You can find the assignment [here.](https://coursepress.lnu.se/kurs/the-web-as-a
 
 This Web of Thing is a real-time overview for a bunch of sensors connected to a Raspberry Pi 3 Model B.
 
-- Temperature och humidity (AM2302).
+- Temperature and humidity (AM2302).
 - Air pressure (BMP180).
 - Light sensor (TSL2561).
 
