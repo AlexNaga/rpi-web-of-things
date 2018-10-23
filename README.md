@@ -1,10 +1,8 @@
 # SensorView
 ## About
 
-This repository was created for the course 1DV527: The web as an application platform.
+This repository was created for the course: The web as an application platform.
 Linnaeus University, Sweden.
-
-You can find the assignment [here.](https://coursepress.lnu.se/kurs/the-web-as-an-application-platform/examination-3)
 
 This Web of Thing is a real-time overview for a bunch of sensors connected to a Raspberry Pi 3 Model B.
 
